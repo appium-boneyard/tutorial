@@ -45,17 +45,16 @@ describe Appium::Tutorial do
     @first_module_gen = tutorial.modules.map { |m| m.modules_gen_path }.first
   end
 
-  it 'detects tutorials with language and version' do
+  it 'detects tutorials with language' do
     actual   = tutorial.tutorials
-    expected = { 'en' => %w[1.0.0 1.2.0],
-    'ko' => %w[1.2.0] }
+    expected = [ 'en' ]
 
     expect(actual).to eq(expected)
   end
 
   it 'populates a module with correct paths' do
     modules     = tutorial.modules
-    module_path = join(tutorial_root, 'en', '1.0.0')
+    module_path = join tutorial_root, 'en'
 
     actual   = modules.map { |m| m.module_root }.first
     expected = module_path
@@ -101,11 +100,11 @@ describe Appium::Tutorial do
   it 'lists contents' do
     list = tutorial.list_contents
 
-    expected_modules = 3 * 2 # name/list per module
+    expected_modules = 1 * 2 # name/list per module
     expect(list.length).to eq(expected_modules)
 
     first_module_name = list.first
-    expect(first_module_name).to eq(":: /en/1.0.0\n")
+    expect(first_module_name).to eq(":: /en\n")
 
     first_module_contents = list[1]
     expect(first_module_contents.length).to be >= 20

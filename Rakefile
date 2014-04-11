@@ -4,8 +4,8 @@ require_relative 'lib/tutorial'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new :spec
 
-# When the 'rake' command is used without a task, run markdown.
-task :default => :markdown
+# When the 'rake' command is used without a task
+task :default => :spec
 
 tutorial = Appium::Tutorial.new tutorial_root: File.join(Dir.pwd, 'modules')
 

@@ -10,23 +10,14 @@ module Appium
 =begin
   The following directory layout is expected
 
-tutorial
+    tutorial
     └── modules
-        ├── en
-        │   ├── 1.0.0
-        │   │   ├── gen
-        │   │   └── source
-        │   └── 1.2.0
-        │       ├── gen
-        │       └── source
-        └── ko
-            └── 1.0.0
-                ├── gen
-                └── source
+        └── en
+            ├── gen
+            └── source
 
   Modules is the tutorial root.
   en is the language code for english.
-  1.0.0 is the version number of appium the tutorial is written against.
   gen contains all the generated files. These are ignored by git on the master branch.
     The generated files are published to the gh-pages branch.
   source contains all the source material such as markdown and example code.
@@ -59,31 +50,22 @@ tutorial
     # must _init_tutorial_root before updating modules
     def _init_modules
       #  { language: ['1.0.0', '1.2.0'] }
-      @tutorials    = {}
+      @tutorials    = []
       language_glob = join @tutorial_root, '*'
       Dir.glob(language_glob) do |language_path|
         next unless directory? language_path
 
         language = basename language_path
 
-        version_glob = join language_path, '*'
-        Dir.glob(version_glob) do |version_path|
-          next unless directory? version_path
-
-          version              = basename version_path
-          @tutorials[language] = [] if @tutorials[language].nil?
-          @tutorials[language] << version
-        end
+        @tutorials << language
       end
     end
 
     def populate_modules
       @modules = []
-      @tutorials.each do |language, versions|
-        versions.each do |version|
-          module_root = join(tutorial_root, language, version)
-          @modules << Appium::ModuleSet.new(tutorial_root: tutorial_root, module_root: module_root)
-        end
+      @tutorials.each do |language|
+        module_root = join tutorial_root, language
+        @modules << Appium::ModuleSet.new(tutorial_root: tutorial_root, module_root: module_root)
       end
 
       @modules
