@@ -1,0 +1,1 @@
+[1.3.6 summary](/appium/01_ruby_appium_native_ios_automation/03_writing_your_first_test/06_summary.md)

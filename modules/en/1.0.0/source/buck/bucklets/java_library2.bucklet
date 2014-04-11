@@ -1,0 +1,37 @@
+# Compiles a Java library with additional compile-time dependencies
+# that do not show up as transitive dependencies to java_library()
+# or java_binary() rule that depends on this library.
+# work around for: https://github.com/facebook/buck/issues/63
+def java_library2(
+    name,
+    srcs = [],
+    resources = [],
+    deps = [],
+    compile_deps = [],
+    visibility = []):
+  c = name + '__compile'
+  t = name + '__link'
+  j = 'lib__%s__output/%s.jar' % (c, c)
+  o = 'lib__%s__output/%s.jar' % (name, name)
+  java_library(
+    name = c,
+    srcs = srcs,
+    resources = resources,
+    deps = deps + compile_deps,
+    visibility = visibility,
+  )
+  # Break the dependency chain by passing the newly built
+  # JAR to consumers through a prebuilt_jar().
+  genrule(
+    name = t,
+    cmd = 'mkdir -p $(dirname $OUT);ln -s $SRCS $OUT',
+    srcs = [genfile(j)],
+    deps = [':' + c],
+    out = o,
+  )
+  prebuilt_jar(
+    name = name,
+    binary_jar = genfile(o),
+    deps = deps + [':' + t],
+    visibility = visibility,
+  )

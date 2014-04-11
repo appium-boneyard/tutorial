@@ -1,0 +1,4 @@
+.*
+_site/
+tutorial/modules/**/*/gen/
+Gemfile.lock

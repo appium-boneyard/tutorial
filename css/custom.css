@@ -1,0 +1,15 @@
+/* override template.css from gollum */
+.markdown-body {
+  width: 56em !important;
+  background-color: white;
+}
+
+body {
+  background-color: #EBEBEB !important;
+}
+
+/* override gollum's hr style which uses dirty-shade.png */
+.markdown-body hr {
+  background: inherit !important;
+  border-bottom: 0.4em solid #eee !important;
+}

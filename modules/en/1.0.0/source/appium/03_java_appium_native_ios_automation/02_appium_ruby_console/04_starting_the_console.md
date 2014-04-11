@@ -1,0 +1,1 @@
+[1.2.4 starting the console](/appium/01_ruby_appium_native_ios_automation/02_appium_ruby_console/04_starting_the_console.md)

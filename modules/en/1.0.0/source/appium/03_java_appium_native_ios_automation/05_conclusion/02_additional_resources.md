@@ -1,0 +1,1 @@
+[1.5.2 resources](/appium/01_ruby_appium_native_ios_automation/05_conclusion/02_additional_resources.md)

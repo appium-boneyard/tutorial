@@ -1,0 +1,36 @@
+def war(
+    name,
+    libs = [],
+    pgmlibs = [],
+    context = [],
+    visibility = [],
+    ):
+  cmd = ['$(exe //bucklets/tools:pack_war)', '-o', '$OUT', '--tmp', '$TMP']
+  for l in libs:
+    cmd.extend(['--lib', l])
+  for l in pgmlibs:
+    cmd.extend(['--pgmlib', l])
+
+  src = []
+  dep = []
+  if context:
+    root = get_base_path()
+    if root:
+      root = '/'.join(['..' for _ in root.split('/')]) + '/'
+    for r in context:
+      dep.append(r[:r.rindex('.')])
+      if r.startswith('//'):
+        r = root + r[2:]
+      r = r.replace(':', '/')
+      src.append(genfile(r))
+  if src:
+    cmd.append('$SRCS')
+
+  genrule(
+    name = name,
+    cmd = ' '.join(cmd),
+    srcs = src,
+    deps = libs + pgmlibs + dep + ['//bucklets/tools:pack_war'],
+    out = name + '.war',
+    visibility = visibility,
+  )

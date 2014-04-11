@@ -1,0 +1,50 @@
+#
+# If a dependent library is undergoing active development it must be
+# recompiled and the change must be reflected in the Buck build process. For
+# example testing Gerrit against changed JGit snapshot version. After building
+# JGit library, the artifacts are created in local Maven build directory.
+#
+# To shorten that workflow and take the installation of the artifacts to the
+# local Maven repository and fetching it again from there out of the picture,
+# `local_jar()` method is used:
+#
+# local_jar(
+#   name = 'jgit',
+#   jar = '/home/<user>/projects/jgit/org.eclipse.jgit/target/org.eclipse.jgit-3.3.0-SNAPSHOT.jar',
+#   src = '/home/<user>/projects/jgit/org.eclipse.jgit/target/org.eclipse.jgit-3.3.0-SNAPSHOT-sources.jar',
+#   deps = [':ewah']
+# )
+
+def local_jar(
+    name,
+    jar,
+    src = None,
+    deps = [],
+    visibility = ['PUBLIC']):
+  binjar = name + '.jar'
+  srcjar = name + '-src.jar'
+  genrule(
+    name = name + '__local_bin',
+    cmd = 'ln -s %s $OUT' % jar,
+    out = binjar)
+  if src:
+    genrule(
+      name = name + '__local_src',
+      cmd = 'ln -s %s $OUT' % src,
+      out = srcjar)
+    prebuilt_jar(
+      name = name + '_src',
+      deps = [':' + name + '__local_src'],
+      binary_jar = genfile(srcjar),
+      visibility = visibility,
+    )
+  else:
+    srcjar = None
+
+  prebuilt_jar(
+    name = name,
+    deps = deps + [':' + name + '__local_bin'],
+    binary_jar = genfile(binjar),
+    source_jar = genfile(srcjar) if srcjar else None,
+    visibility = visibility,
+  )

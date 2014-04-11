@@ -1,0 +1,1 @@
+[1.2.9 summary](/appium/01_ruby_appium_native_ios_automation/02_appium_ruby_console/09_summary.md)

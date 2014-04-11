@@ -1,0 +1,1 @@
+[1.2.2 compiling ios sample app](/appium/01_ruby_appium_native_ios_automation/02_appium_ruby_console/02_compiling_the_ios_sample_app.md)

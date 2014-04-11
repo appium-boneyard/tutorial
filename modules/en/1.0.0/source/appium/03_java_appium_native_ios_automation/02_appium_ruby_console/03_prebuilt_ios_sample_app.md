@@ -1,0 +1,1 @@
+[1.2.3 prebuilt ios sample app](/appium/01_ruby_appium_native_ios_automation/02_appium_ruby_console/03_prebuilt_ios_sample_app.md)

@@ -1,0 +1,3 @@
+DEVICE="android"
+APP_PATH="./api.apk"
+require=["./appium/android/pages", "./appium/android/common.rb"]

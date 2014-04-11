@@ -1,0 +1,1 @@
+[2.2.5 page command](/appium/02_ruby_appium_native_android_automation/02_appium_ruby_console/05_page_command.md)

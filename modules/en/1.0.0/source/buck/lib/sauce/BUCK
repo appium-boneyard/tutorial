@@ -1,0 +1,27 @@
+include_defs('//bucklets/maven_jar.bucklet')
+
+SAUCE_VERSION = '2.0.7'
+
+# http://repository-saucelabs.forge.cloudbees.com/release/com/saucelabs/sauce_junit/2.0.7/sauce_junit-2.0.7.pom
+# junit 4.11
+# sauce_java_common 2.0.7 (same version as sauce_junit)
+maven_jar(
+  name = 'sauce_junit',
+  id = 'com.saucelabs:sauce_junit:' + SAUCE_VERSION,
+  sha1 = 'bbba0c7e77358685dbec0373eef32c11b8263857',
+  repository = 'https://repository-saucelabs.forge.cloudbees.com/release',
+  exported_deps = [
+    '//lib/junit:junit',
+    '//lib/sauce:sauce_java_common',
+  ],
+  visibility = ['PUBLIC'],
+)
+
+# http://repository-saucelabs.forge.cloudbees.com/release/com/saucelabs/sauce_java_common/2.0.7/sauce_java_common-2.0.7.pom
+maven_jar(
+  name = 'sauce_java_common',
+  id = 'com.saucelabs:sauce_java_common:' + SAUCE_VERSION,
+  sha1 = 'eb9a4eca0dda3bc65985be0533818172dce9cafc',
+  repository = 'https://repository-saucelabs.forge.cloudbees.com/release',
+  visibility = ['//lib/sauce:sauce_junit'],
+)

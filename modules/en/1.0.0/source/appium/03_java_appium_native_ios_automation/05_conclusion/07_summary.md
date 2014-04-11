@@ -1,0 +1,1 @@
+[1.5.7 summary](/appium/01_ruby_appium_native_ios_automation/05_conclusion/07_summary.md)

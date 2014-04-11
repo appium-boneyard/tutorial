@@ -1,0 +1,159 @@
+include_defs('//bucklets/maven_jar.bucklet')
+
+SELENIUM_VERSION = '2.40.0'
+
+maven_jar(
+  name = 'selenium-java',
+  id = 'org.seleniumhq.selenium:selenium-java:' + SELENIUM_VERSION,
+  sha1 = '512af6995dc21cb005b8b936a1d2da2090bcd2c8',
+  exported_deps = [
+    '//lib/selenium:selenium-support',
+    '//lib/selenium:selenium-remote-driver',
+  ],
+  visibility = ['PUBLIC'],
+)
+
+maven_jar(
+  name = 'selenium-support',
+  id = 'org.seleniumhq.selenium:selenium-support:' + SELENIUM_VERSION,
+  sha1 = 'bdf917996cbb9e22f761a55265f4b35aa78501b4',
+  exported_deps = [
+    '//lib/selenium:selenium-api',
+    '//lib:hamcrest-all',
+    '//lib/junit:junit',
+  ],
+  visibility = ['//lib/selenium:selenium-java'],
+)
+
+maven_jar(
+  name = 'selenium-api',
+  id = 'org.seleniumhq.selenium:selenium-api:' + SELENIUM_VERSION,
+  sha1 = 'f0f9033ee6520179886a99ebb7b30f48d87c109c',
+  exported_deps = [
+    '//lib:json',
+    '//lib:guava'
+  ],
+  # limit visibility to all rules in //lib/selenium
+  # used by selenium-support, selenium-remote-driver
+  visibility = ['//lib/selenium:'],
+)
+
+# -- remote driver
+#
+# http://search.maven.org/remotecontent?filepath=org/seleniumhq/selenium/selenium-remote-driver/2.40.0/selenium-remote-driver-2.40.0.pom
+# http://search.maven.org/remotecontent?filepath=org/seleniumhq/selenium/selenium-remote-driver/2.40.0/selenium-remote-driver-2.40.0.jar.sha1
+maven_jar(
+  name = 'selenium-remote-driver',
+  id = 'org.seleniumhq.selenium:selenium-remote-driver:' + SELENIUM_VERSION,
+  sha1 = '54abc2a4b02ea3c177d0200445b42b4515d7a493',
+  exported_deps = [
+    '//lib:json',
+    '//lib/selenium:selenium-api',
+    '//lib:guava',
+    '//lib/selenium:cglib-nodep',
+    '//lib/selenium:httpclient',
+  ],
+  visibility = ['//lib/selenium:selenium-java'],
+)
+
+# http://search.maven.org/remotecontent?filepath=cglib/cglib-nodep/3.1/cglib-nodep-3.1.pom
+# http://search.maven.org/remotecontent?filepath=cglib/cglib-nodep/3.1/cglib-nodep-3.1.jar.sha1
+maven_jar(
+  name = 'cglib-nodep',
+  id = 'cglib:cglib-nodep:3.1',
+  sha1 = 'aa83efbd1aedc4f26bdf00e7ea78191483f2c9b3',
+  exported_deps = [],
+  visibility = ['//lib/selenium:selenium-remote-driver'],
+)
+
+# http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.pom
+# http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar.sha1
+maven_jar(
+  name = 'httpclient',
+  id = 'org.apache.httpcomponents:httpclient:4.3.3',
+  sha1 = '18f4247ff4572a074444572cee34647c43e7c9c7',
+  exported_deps = [
+    '//lib/selenium:httpcore',
+    '//lib/selenium:commons-logging',
+    '//lib/selenium:commons-codec',
+    '//lib/selenium:commons-exec',
+    '//lib/selenium:jna-platform',
+  ],
+  visibility = ['//lib/selenium:selenium-remote-driver'],
+)
+
+# httpclient deps
+
+# http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.pom
+# http://search.maven.org/remotecontent?filepath=org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar.sha1
+maven_jar(
+  name = 'httpcore',
+  id = 'org.apache.httpcomponents:httpcore:4.3.2',
+  sha1 = '31fbbff1ddbf98f3aa7377c94d33b0447c646b6e',
+  exported_deps = [],
+  visibility = ['//lib/selenium:httpclient'],
+)
+
+# http://search.maven.org/remotecontent?filepath=commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom
+# http://search.maven.org/remotecontent?filepath=commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar.sha1
+maven_jar(
+  name = 'commons-logging',
+  id = 'commons-logging:commons-logging:1.1.3',
+  sha1 = 'f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f',
+  exported_deps = ['//lib/selenium:log4j'],
+  visibility = ['//lib/selenium:httpclient'],
+)
+
+# http://search.maven.org/remotecontent?filepath=log4j/log4j/1.2.17/log4j-1.2.17.pom
+# http://search.maven.org/remotecontent?filepath=log4j/log4j/1.2.17/log4j-1.2.17.jar.sha1
+# ignore log4j's dependencies on ant
+maven_jar(
+  name = 'log4j',
+  id = 'log4j:log4j:1.2.17',
+  sha1 = '5af35056b4d257e4b64b9e8069c0746e8b08629f',
+  visibility = ['//lib/selenium:commons-logging'],
+)
+
+# http://search.maven.org/remotecontent?filepath=commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.pom
+# http://search.maven.org/remotecontent?filepath=commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.jar.sha1
+# ignore junit dep
+maven_jar(
+  name = 'commons-codec',
+  id = 'commons-codec:commons-codec:20041127.091804',
+  sha1 = '17b1ff59f0916ac7bcff704e712415a0d49d468d',
+  exported_deps = [],
+  visibility = ['//lib/selenium:httpclient'],
+)
+
+# http://search.maven.org/remotecontent?filepath=org/apache/commons/commons-exec/1.2/commons-exec-1.2.pom
+# http://search.maven.org/remotecontent?filepath=org/apache/commons/commons-exec/1.2/commons-exec-1.2.jar.sha1
+maven_jar(
+  name = 'commons-exec',
+  id = 'org.apache.commons:commons-exec:1.2',
+  sha1 = '635b879f2ab19834f56b98bd0a532d8f029d0588',
+  exported_deps = [],
+  visibility = ['//lib/selenium:httpclient'],
+)
+
+JNA_VERSION = '4.1.0'
+
+# https://maven.java.net/content/repositories/releases/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.pom
+# https://maven.java.net/content/repositories/releases/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar.sha1
+# jna-platform depends on jna 4.1.0
+maven_jar(
+  name = 'jna-platform',
+  id = 'net.java.dev.jna:jna-platform:' + JNA_VERSION,
+  sha1 = '23457ad1cf75c2c16763330de5565a0e67b4bc0a',
+  exported_deps = ['//lib/selenium:jna'],
+  visibility = ['//lib/selenium:httpclient'],
+)
+
+# http://search.maven.org/remotecontent?filepath=net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+# http://search.maven.org/remotecontent?filepath=net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar.sha1
+maven_jar(
+  name = 'jna',
+  id = 'net.java.dev.jna:jna:' + JNA_VERSION,
+  sha1 = '1c12d070e602efd8021891cdd7fd18bc129372d4',
+  exported_deps = [],
+  visibility = ['//lib/selenium:jna-platform'],
+)

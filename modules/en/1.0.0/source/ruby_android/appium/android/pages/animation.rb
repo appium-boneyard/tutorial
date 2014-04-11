@@ -1,0 +1,23 @@
+module APIDemos
+  module Animation
+    class << self
+      #
+      # asserts
+      #
+
+      def assert_exists
+        s_text_exact 'Bouncing Balls'
+      end
+
+      def assert
+        wait { self.assert_exists }
+      end
+    end
+  end
+end
+
+module Kernel
+  def animation
+    APIDemos::Animation
+  end
+end

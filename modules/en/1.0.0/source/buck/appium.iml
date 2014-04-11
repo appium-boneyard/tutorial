@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/buck-out/android/gen">
+      <sourceFolder url="file://$MODULE_DIR$/buck-out/android/gen" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_junit_junit_junit_4_11_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_sauce_sauce_java_common_sauce_java_common_2_0_7_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_sauce_sauce_junit_sauce_junit_2_0_7_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_selenium_java_selenium_java_2_40_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_junit_hamcrest_core_hamcrest_core_1_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_cglib_nodep_cglib_nodep_3_1_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_selenium_remote_driver_selenium_remote_driver_2_40_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_guava_guava_16_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_json_json_20140107_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_selenium_support_selenium_support_2_40_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_hamcrest_all_hamcrest_all_1_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_commons_codec_commons_codec_20041127_091804_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_commons_exec_commons_exec_1_2_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_httpclient_httpclient_4_3_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_httpcore_httpcore_4_3_2_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_selenium_api_selenium_api_2_40_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_commons_logging_commons_logging_1_1_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_log4j_log4j_1_2_17_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_jna_jna_4_1_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="buck_out_gen_lib_selenium_jna_platform_jna_platform_4_1_0_jar" level="project" />
+    <orderEntry type="module" module-name="module_lib_sauce" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="module" module-name="module_lib_selenium" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
+  </component>
+</module>
+

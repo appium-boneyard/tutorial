@@ -1,0 +1,1 @@
+[2.5.3 community support](/appium/02_ruby_appium_native_android_automation/05_conclusion/03_community_support.md)

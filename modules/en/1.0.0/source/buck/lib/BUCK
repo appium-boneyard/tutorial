@@ -1,0 +1,22 @@
+include_defs('//bucklets/maven_jar.bucklet')
+
+maven_jar(
+  name = 'guava',
+  id = 'com.google.guava:guava:16.0',
+  sha1 = 'aca09d2e5e8416bf91550e72281958e35460be52',
+  visibility = ['PUBLIC'],
+)
+
+maven_jar(
+  name = 'json',
+  id = 'org.json:json:20140107',
+  sha1 = 'd1ffca6e2482b002702c6a576166fd685e3370e3',
+  visibility = ['PUBLIC'],
+)
+
+maven_jar(
+  name = 'hamcrest-all',
+  id = 'org.hamcrest:hamcrest-all:1.3',
+  sha1 = '63a21ebc981131004ad02e0434e799fd7f3a8d5a',
+  visibility = ['PUBLIC'],
+)

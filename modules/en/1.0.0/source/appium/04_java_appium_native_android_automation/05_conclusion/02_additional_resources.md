@@ -1,0 +1,1 @@
+[2.5.2 additional resources](/appium/02_ruby_appium_native_android_automation/05_conclusion/02_additional_resources.md)

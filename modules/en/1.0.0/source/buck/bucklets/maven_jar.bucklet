@@ -1,0 +1,105 @@
+#
+# Fetch artifacts from Maven repository
+# see: https://github.com/facebook/buck/issues/64
+#
+
+GERRIT = 'GERRIT:'
+GERRIT_API = 'GERRIT_API:'
+ECLIPSE = 'ECLIPSE:'
+MAVEN_CENTRAL = 'MAVEN_CENTRAL:'
+MAVEN_LOCAL = 'MAVEN_LOCAL:'
+
+def maven_jar(
+    name,
+    id,
+    exclude = [],
+    exclude_java_sources = False,
+    unsign = False,
+    deps = [],
+    exported_deps = [],
+    sha1 = '', bin_sha1 = '', src_sha1 = '',
+    repository = MAVEN_CENTRAL,
+    attach_source = False, # Do not attach source by default
+    visibility = ['PUBLIC']):
+  from os import path
+
+  parts = id.split(':')
+  if len(parts) != 3:
+    raise NameError('expected id="groupId:artifactId:version"')
+  group, artifact, version = parts
+
+  jar = path.join(name, artifact.lower() + '-' + version)
+  url = '/'.join([
+    repository,
+    group.replace('.', '/'), artifact, version,
+    artifact + '-' + version])
+
+  binjar = jar + '.jar'
+  binurl = url + '.jar'
+
+  srcjar = jar + '-src.jar'
+  srcurl = url + '-sources.jar'
+
+  cmd = ['$(exe //bucklets/tools:download_file)', '-o', '$OUT', '-u', binurl]
+  if sha1:
+    cmd.extend(['-v', sha1])
+  elif bin_sha1:
+    cmd.extend(['-v', bin_sha1])
+  for x in exclude:
+    cmd.extend(['-x', x])
+  if exclude_java_sources:
+    cmd.append('--exclude_java_sources')
+  if unsign:
+    cmd.append('--unsign')
+
+  genrule(
+    name = name + '__download_bin',
+    cmd = ' '.join(cmd),
+    deps = ['//bucklets/tools:download_file'],
+    out = binjar,
+  )
+
+  if src_sha1 or attach_source:
+    cmd = ['$(exe //bucklets/tools:download_file)', '-o', '$OUT', '-u', srcurl]
+    if src_sha1:
+      cmd.extend(['-v', src_sha1])
+    genrule(
+      name = name + '__download_src',
+      cmd = ' '.join(cmd),
+      deps = ['//bucklets/tools:download_file'],
+      out = srcjar,
+    )
+    prebuilt_jar(
+      name = name + '_src',
+      binary_jar = genfile(srcjar),
+      deps = [':' + name + '__download_src'],
+      visibility = visibility,
+    )
+  else:
+    srcjar = None
+    genrule(
+      name = name + '__download_src',
+      cmd = ':>$OUT',
+      out = '__' + name + '__no_src',
+    )
+
+  if exported_deps:
+    prebuilt_jar(
+      name = name + '__jar',
+      deps = deps + [':' + name + '__download_bin'],
+      binary_jar = genfile(binjar),
+      source_jar = genfile(srcjar) if srcjar else None,
+    )
+    java_library(
+      name = name,
+      exported_deps = exported_deps + [':' + name + '__jar'],
+      visibility = visibility,
+    )
+  else:
+    prebuilt_jar(
+      name = name,
+      deps = deps + [':' + name + '__download_bin'],
+      binary_jar = genfile(binjar),
+      source_jar = genfile(srcjar) if srcjar else None,
+      visibility = visibility,
+    )

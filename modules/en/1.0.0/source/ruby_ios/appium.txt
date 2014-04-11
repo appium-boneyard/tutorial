@@ -1,0 +1,3 @@
+DEVICE="ios"
+APP_PATH="./UICatalog.app"
+require=["./appium/ios/pages", "./appium/ios/common.rb"]
