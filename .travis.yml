@@ -1,0 +1,5 @@
+rvm:
+  - 2.1.1
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install libicu-dev
