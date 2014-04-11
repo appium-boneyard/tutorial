@@ -1,5 +1,4 @@
-tutorial [![Build Status](https://travis-ci.org/appium/tutorial.svg?branch=master)](https://travis-ci.org/appium/tutorial) [![Dependency Status](https://gemnasium.com/appium/tutorial.svg)](https://gemnasium.com/appium/tutorial)
-========
+#### tutorial [![Build Status](https://travis-ci.org/appium/tutorial.svg?branch=master)](https://travis-ci.org/appium/tutorial) [![Dependency Status](https://gemnasium.com/appium/tutorial.svg)](https://gemnasium.com/appium/tutorial)
 
 Getting started tutorials for appium
 
