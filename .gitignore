@@ -1,4 +1,4 @@
 .*
-_site/
 modules/en/gen
 Gemfile.lock
+tutorials/

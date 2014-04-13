@@ -30,7 +30,7 @@ module Appium
     def initialize opts={}
       _init_tutorial_root opts[:tutorial_root]
       # keep tutorial output outside of modules folder.
-      @tutorial_path = join tutorial_root, '..', '..', 'tutorials'
+      @tutorial_path = join tutorial_root, '..', 'tutorials'
 
       _init_modules
       populate_modules

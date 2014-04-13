@@ -36,3 +36,10 @@ desc 'Publish html folder to GitHub'
 task :publish do
   tutorial.publish
 end
+
+desc 'Generate tutorials without publishing to github'
+task :generate do
+  tutorial.skip_git = true
+  tutorial.publish
+  tutorial.skip_git = false
+end

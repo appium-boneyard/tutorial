@@ -31,7 +31,7 @@ module Appium
     end
 
     def wrap_html html
-      css = '../../css/'
+      css = '../css/'
       # font-awesome.css has all extra styles removed so don't use cdn version
       # the cdn version will contain everything.
       extra = <<EXTRA
@@ -47,7 +47,10 @@ EXTRA
 <!DOCTYPE html>
 <html>
 <head>
-{% include head.html extra='#{extra}' %}
+
+{% capture extra %}
+#{extra.strip}{% endcapture %}
+{% include head.html extra=extra %}
 
 <link href="#{css}template.css" media="all" rel="stylesheet" type="text/css" />
 <link href="#{css}font-awesome-4.0.3/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
