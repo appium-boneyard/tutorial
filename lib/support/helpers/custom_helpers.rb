@@ -32,6 +32,14 @@ module Appium
 
     def wrap_html html
       css = '../../css/'
+      # font-awesome.css has all extra styles removed so don't use cdn version
+      # the cdn version will contain everything.
+      extra = <<EXTRA
+<link href="#{css}template.css" media="all" rel="stylesheet" type="text/css" />
+<link href="#{css}font-awesome-4.0.3/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+<link href="#{css}custom.css" media="all" rel="stylesheet" type="text/css" />
+EXTRA
+
 # MUST include doctype or browser will revert to quirks mode.
       <<-HTML
 ---
@@ -39,12 +47,7 @@ module Appium
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/css/appium.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+{% include head.html extra='#{extra}' %}
 
 <link href="#{css}template.css" media="all" rel="stylesheet" type="text/css" />
 <link href="#{css}font-awesome-4.0.3/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
