@@ -6,7 +6,6 @@ module Appium
     include Appium::Helpers
 
     attr_reader :tutorial_root, :tutorials, :modules, :tutorial_path
-    attr_accessor :skip_git # used for unit testing
 =begin
   The following directory layout is expected
 
@@ -34,8 +33,6 @@ module Appium
 
       _init_modules
       populate_modules
-
-      @skip_git = false
     end
 
     # @private
@@ -115,16 +112,6 @@ module Appium
       # copy font awesome + css
       css = join tutorial_root, '..', 'css'
       copy_entry css, join(tutorial_path, 'css')
-
-      unless skip_git
-        # sh will end the task on failure
-        sh 'git add --all .'
-        # git commit fails when there's nothing to commit
-        sh_ignore_failure 'git commit -am "Update tutorial"'
-        sh 'git pull --rebase origin master'
-        sh 'git push'
-        sh 'git checkout master'
-      end
     end
   end
 end

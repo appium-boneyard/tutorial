@@ -32,14 +32,7 @@ task :list do
   puts tutorial.list_contents
 end
 
-desc 'Publish html folder to GitHub'
-task :publish do
+desc 'Build entire tutorial and save in tutorials/ folder'
+task :build do
   tutorial.publish
-end
-
-desc 'Generate tutorials without publishing to github'
-task :generate do
-  tutorial.skip_git = true
-  tutorial.publish
-  tutorial.skip_git = false
 end

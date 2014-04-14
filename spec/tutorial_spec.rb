@@ -113,8 +113,6 @@ describe Appium::Tutorial do
   it 'publishes to the tutorial path' do
     delete_tutorial_path
 
-    # Must skip git commands or we'll publish to github!
-    tutorial.skip_git = true
     tutorial.publish
 
     expect_tutorial_path_exists true
