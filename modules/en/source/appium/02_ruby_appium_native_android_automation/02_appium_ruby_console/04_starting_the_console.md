@@ -12,15 +12,16 @@ We're developing locally, so create an appium.txt with the following:
 
 ```
 $ nano appium.txt
-DEVICE="android"
-APP_PATH="./api.apk"
+[caps]
+platformName = "android"
+app = "./api.apk"
 ```
 
 The appium.txt contains two important pieces of information.
 
-DEVICE is the platform we're automating. In this case, we're using android.
+platformName is the platform we're automating. In this case, we're using android.
 
-APP_PATH is the path to api.apk. The ruby console is able to parse relative
+app is the path to api.apk. The ruby console is able to parse relative
 paths. This path will then be converted to an absolute path which appium uses
 to identify which app to install on the emulator.
 

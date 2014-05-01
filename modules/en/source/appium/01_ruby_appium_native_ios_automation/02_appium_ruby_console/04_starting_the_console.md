@@ -7,16 +7,17 @@ that path.
 
 ```
 $ nano appium.txt
-DEVICE="ios"
-APP_PATH="./UICatalog.app"
+[caps]
+platformName = "ios"
+app = "./UICatalog.app"
 ```
 
 The appium.txt contains two important pieces of information.
 
-DEVICE is the platform we're automating. In this case,
+platformName is the platform we're automating. In this case,
 we're going to automate ios.
 
-APP_PATH is the path to UICatalog.app. The ruby console is able to parse
+app is the path to UICatalog.app. The ruby console is able to parse
 relative paths. This path will then be converted to an absolute path which
 appium uses to identify which app to install on the simulator.
 
