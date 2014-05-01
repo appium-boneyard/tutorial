@@ -1,3 +1,6 @@
-DEVICE="android"
-APP_PATH="./api.apk"
-require=["./appium/android/pages", "./appium/android/common.rb"]
+[caps]
+platformName = "android"
+app = "./api.apk"
+
+[appium_lib]
+require = ["./appium/android/pages", "./appium/android/common.rb"]
