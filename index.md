@@ -18,10 +18,10 @@ You'll learn how to:
 
 # 4 Tracks
 
-0. [Ruby Appium iOS](/tutorials/en/01_ruby_appium_native_ios_automation.html)
-0. [Ruby Appium Android](/tutorials/en/02_ruby_appium_native_android_automation.html)
-0. [Java Appium iOS](/tutorials/en/03_java_appium_native_ios_automation.html)
-0. [Java Appium Android](/tutorials/en/04_java_appium_native_android_automation.html)
+0. [Ruby Appium iOS](/tutorial/tutorials/en/01_ruby_appium_native_ios_automation.html)
+0. [Ruby Appium Android](/tutorial/tutorials/en/02_ruby_appium_native_android_automation.html)
+0. [Java Appium iOS](/tutorial/tutorials/en/03_java_appium_native_ios_automation.html)
+0. [Java Appium Android](/tutorial/tutorials/en/04_java_appium_native_android_automation.html)
 
 --
 
