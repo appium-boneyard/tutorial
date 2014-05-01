@@ -41,7 +41,7 @@ value. When the app changes, our tests will break.
 cell_1 = wait { s_text 2 }
 
 wait { cell_1.click }
-wait { name_exact 'Accessibility Node Provider' }
+wait { find_exact 'Accessibility Node Provider' }
 ```
 
 In this code, we're finding the first text by index. Index 2 contains the
@@ -59,9 +59,9 @@ cell_names = tags('text').map { |cell| cell.name }
 
 cell_names[1..-1].each do |cell_name|
   wait { scroll_to_exact(cell_name).click }
-  wait_true { ! exists { name_exact cell_name } }
+  wait_true { ! exists { find_exact cell_name } }
   wait { back }
-  wait { name_exact('Accessibility'); name_exact('Animation')  }
+  wait { find_exact('Accessibility'); find_exact('Animation')  }
 end
 ```
 
@@ -88,7 +88,7 @@ The first item in the array is the page header. That's discarded with
 clicking each of them. To detect that the click was successful,
 the code waits for the cell name to no longer be visible.
 
-`wait_true { ! exists { name_exact cell_name } }`
+`wait_true { ! exists { find_exact cell_name } }`
 
 After that we're returning to the home page by using `back`. The back method
 will return even though the app hasn't finished transitioning. I recommend
@@ -99,4 +99,4 @@ disabling animations under in `Dev Settings`. This can also be [done programmati
 Finally, we're checking to ensure we've returned to the homepage before
 looking for the next element.
 
-`wait { name_exact('Accessibility'); name_exact('Animation')  }`
+`wait { find_exact('Accessibility'); find_exact('Animation')  }`

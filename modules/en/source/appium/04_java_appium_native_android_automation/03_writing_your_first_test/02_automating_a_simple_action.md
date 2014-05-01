@@ -66,13 +66,13 @@ value. When the app changes, our tests will break.
 ```ruby
 # ruby console
 wait { s_text 2 }.click
-wait { name_exact 'Accessibility Node Provider' }
+wait { find_exact 'Accessibility Node Provider' }
 ```
 
 ```java
 // java
 wait(for_s_text(2)).click();
-name_exact("Accessibility Node Provider");
+find_exact("Accessibility Node Provider");
 ```
 
 In this code, we're finding the first text by index. Index 2 contains the
@@ -91,9 +91,9 @@ cell_names = tags('text').map { |cell| cell.name }
 
 cell_names[1..-1].each do |cell_name|
   wait { scroll_to_exact(cell_name).click }
-  wait_true { ! exists { name_exact cell_name } }
+  wait_true { ! exists { find_exact cell_name } }
   wait { back }
-  wait { name_exact('Accessibility'); name_exact('Animation')  }
+  wait { find_exact('Accessibility'); find_exact('Animation')  }
 end
 ```
 
@@ -113,8 +113,8 @@ for (String cell_name : cell_names) {
     scroll_to_exact(cell_name).click();
     waitInvisible(for_s_text_exact(cell_name));
     back();
-    wait(for_name_exact("Accessibility"));
-    wait(for_name_exact("Animation"));
+    wait(for_find_exact("Accessibility"));
+    wait(for_find_exact("Animation"));
 }
 
 setWait(30); // restore old implicit wait
@@ -157,6 +157,6 @@ Finally, we're checking to ensure we've returned to the homepage before
 looking for the next element.
 
 ```java
-wait(for_name_exact("Accessibility"));
-wait(for_name_exact("Animation"));
+wait(for_find_exact("Accessibility"));
+wait(for_find_exact("Animation"));
 ```
