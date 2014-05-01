@@ -27,6 +27,4 @@ You'll learn how to:
 
 #### What is Appium?
 
-Appium enables automating iOS and Android apps using Selenium. See the following iPhone demo video:
-
-<iframe width="854" height="510" src="//www.youtube.com/embed/eKhuF_4KzYo" frameborder="0" allowfullscreen></iframe>
+Appium enables automating iOS and Android apps using Selenium.
