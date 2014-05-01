@@ -102,47 +102,7 @@ UIAStaticText
 ```
 
 `UIAStaticText` is the [iOS specific name](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIAStaticTextClassReference/UIAStaticText/UIAStaticText.html)
-for the element. Appium uses [mechanic.js](https://github.com/jaykz52/mechanic)
-and a set of shortcut names is available.
-
-
-iOS Name             | Shortcut
-                  --:|:--
-UIAActionSheet       | actionsheet
-UIAActivityIndicator | activityIndicator
-UIAAlert             | alert
-UIAButton            | button
-UIACollectionCell    | collectionCell
-UIACollectionView    | collection
-UIAEditingMenu       | editingMenu
-UIAImage             | image
-UIAKey               | key
-UIAKeyboard          | keyboard
-UIALink              | link
-UIAMapView           | mapView
-UIAPageIndicator     | pageIndicator
-UIAPicker            | picker
-UIAPickerWheel       | pickerwheel
-UIAPopover           | popover
-UIAProgressIndicator | progress
-UIAScrollView        | scrollview
-UIASearchBar         | searchbar
-UIASecureTextField   | secure
-UIASegmentedControl  | segmented
-UIASlider            | slider
-UIAStaticText        | text
-UIAStatusBar         | statusbar
-UIASwitch            | switch
-UIATabBar            | tabbar
-UIATableView         | tableview
-UIATableCell         | cell, tableCell
-UIATableGroup        | group
-UIATextField         | textfield
-UIATextView          | textview
-UIAToolbar           | toolbar
-UIAWebView           | webview
-UIAWindow            | window
-UIANavigationBar     | navigationBar
+for the element.
 
 Under each element name is a list of properties.
 
