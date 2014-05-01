@@ -1,0 +1,1147 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+
+{% capture extra %}
+<link href="../css/template.css" media="all" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome-4.0.3/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+<link href="../css/custom.css" media="all" rel="stylesheet" type="text/css" />{% endcapture %}
+{% include head.html extra=extra %}
+
+<link href="../css/template.css" media="all" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome-4.0.3/css/font-awesome.css" media="all" rel="stylesheet" type="text/css" />
+<link href="../css/custom.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+{% include navbar.html %}
+<div class="markdown-body">
+<p><div class="toc"><div class="toc-title">Table of Contents</div><ul><ul><li><a href="#Module-3---Java-Appium-Native-iOS-Automation">Module 3 - Java Appium Native iOS Automation</a></li></ul></ul><ul><ul><ul><li><a href="#Chapter-1---Getting-started-with-appium">Chapter 1 - Getting started with appium</a></li></ul></ul></ul><ul><ul><ul><ul><li><a href="#Introduction">Introduction</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Install">Install</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Bash-Profile">Bash Profile</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Troubleshooting">Troubleshooting</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#SSL-Issues">SSL Issues</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Maven-on-OS-X-10.9">Maven on OS X 10.9</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Corrupt-ruby-gems">Corrupt ruby gems</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Java-IDE">Java IDE</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Helpful-Links">Helpful Links</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Summary">Summary</a></li></ul></ul></ul></ul><ul><ul><ul><li><a href="#Chapter-2---Appium-Ruby-Console">Chapter 2 - Appium Ruby Console</a></li></ul></ul></ul><ul><ul><ul><ul><li><a href="#2-Introduction">Introduction</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Compiling-the-iOS-sample-app">Compiling the iOS sample app</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Prebuilt-iOS-Sample-App">Prebuilt iOS Sample App</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Starting-the-Console">Starting the Console</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Page-Command">Page Command</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Ending-the-session">Ending the session</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Appium.app-Inspector">Appium.app Inspector</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#2-Helpful-Links">Helpful Links</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#2-Summary">Summary</a></li></ul></ul></ul></ul><ul><ul><ul><li><a href="#Chapter-3---Writing-your-first-test">Chapter 3 - Writing your first test</a></li></ul></ul></ul><ul><ul><ul><ul><li><a href="#3-Introduction">Introduction</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Automating-a-simple-action">Automating a simple action</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Page-Object-Pattern">Page Object Pattern</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Running-the-test-with-Maven">Running the test with Maven</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#3-Helpful-Links">Helpful Links</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#3-Summary">Summary</a></li></ul></ul></ul></ul><ul><ul><ul><li><a href="#Chapter-4---Running-tests">Chapter 4 - Running tests</a></li></ul></ul></ul><ul><ul><ul><ul><li><a href="#4-Introduction">Introduction</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Running-locally">Running locally</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Running-using-Jenkins-CI">Running using Jenkins CI</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Running-on-Sauce">Running on Sauce</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#4-Helpful-Links">Helpful Links</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#4-Summary">Summary</a></li></ul></ul></ul></ul><ul><ul><ul><li><a href="#Chapter-5---Conclusion">Chapter 5 - Conclusion</a></li></ul></ul></ul><ul><ul><ul><ul><li><a href="#5-Introduction">Introduction</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Additional-Resources">Additional Resources</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Community-Support">Community Support</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Professional-Support">Professional Support</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#Searching-the-Source-Code">Searching the Source Code</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#5-Helpful-Links">Helpful Links</a></li></ul></ul></ul></ul><ul><ul><ul><ul><li><a href="#5-Summary">Summary</a></li></ul></ul></ul></ul></div></p>
+
+<h2><a class="anchor" id="Module-3---Java-Appium-Native-iOS-Automation" href="#Module-3---Java-Appium-Native-iOS-Automation"><i class="fa fa-link"></i></a>Module 3 - Java Appium Native iOS Automation</h2>
+
+<h3><a class="anchor" id="Chapter-1---Getting-started-with-appium" href="#Chapter-1---Getting-started-with-appium"><i class="fa fa-link"></i></a>Chapter 1 - Getting started with appium</h3>
+
+<h4><a class="anchor" id="Introduction" href="#Introduction"><i class="fa fa-link"></i></a>Introduction</h4>
+
+<p>Appium enables iOS and Android automation using Selenium WebDriver.
+The same WebDriver bindings can be used across web and mobile.</p>
+
+<ul><li>Open Source
+
+<ul><li>Apache 2.0 License</li>
+</ul></li>
+<li>Cross Platform
+
+<ul><li>Test Android on OS X, Windows, Linux</li>
+<li>Test iOS on OS X</li>
+</ul></li>
+<li>Native, Hybrid, Mobile Web</li>
+<li>Any language. Any framework.</li>
+<li>No app changes or source code access required.</li>
+</ul><p>In this chapter, we'll be preparing to automate a native iOS application using
+appium with Java.</p>
+
+<hr /><h4><a class="anchor" id="Install" href="#Install"><i class="fa fa-link"></i></a>Install</h4>
+
+<p>This document is written for OS X 10.9.2 or better.</p>
+
+<table><thead><tr><th align="right">Tool</th>
+<th align="left">Description</th>
+</tr></thead><tbody><tr><td align="right">OS X</td>
+<td align="left">The mac operating system</td>
+</tr><tr><td align="right">Xcode</td>
+<td align="left">Apple's integrated development environment</td>
+</tr><tr><td align="right">rvm</td>
+<td align="left">The ruby version manager. Helps install ruby</td>
+</tr><tr><td align="right">gem</td>
+<td align="left">The rubygems command. A package manager for Ruby</td>
+</tr><tr><td align="right">Java</td>
+<td align="left">A programming language and software development kit</td>
+</tr><tr><td align="right">bundler</td>
+<td align="left">Enables managing gem dependencies</td>
+</tr><tr><td align="right">brew</td>
+<td align="left">Helps install software on Macs</td>
+</tr><tr><td align="right">npm</td>
+<td align="left">Node's package manager</td>
+</tr><tr><td align="right">grunt</td>
+<td align="left">A command line task runner for node.js</td>
+</tr><tr><td align="right">ant</td>
+<td align="left">A java build system</td>
+</tr><tr><td align="right">maven</td>
+<td align="left">A java build system with improved dependency management</td>
+</tr></tbody></table><p>Note that <a href="http://appium.io/">Appium.app</a> provides a ready to run version of
+appium. If you're using Appium.app then there's no need to run from source unless
+you want to use the latest and greatest.</p>
+
+<p>Install <a href="https://developer.apple.com/downloads/index.action">Xcode 5.1 from the App Store</a>.</p>
+
+<p>Install the command line build tools within Xcode. (Xcode -&gt; Preferences -&gt; Downloads).
+Alternatively, download them directly from <a href="https://developer.apple.com/downloads/index.action">Apple</a>.</p>
+
+<ul><li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>.</li>
+<li>Install the latest stable release of Ruby.</li>
+</ul><pre>$ \curl -sSL https://get.rvm.io | bash -s stable
+$ rvm install ruby</pre>
+
+<ul><li>Make sure RVM is using the correct Ruby by default</li>
+</ul><pre>$ rvm list
+$ rvm --default use 2.1.1</pre>
+
+<ul><li>If you have an old ruby/rvm, you can upgrade with</li>
+</ul><pre>$ rvm get head
+$ rvm autolibs homebrew
+$ rvm install ruby</pre>
+
+<ul><li>Check that it's installed properly by printing the ruby version.</li>
+</ul><p><code>$ ruby --version</code></p>
+
+<ul><li>Update RubyGems and Bundler.</li>
+</ul><pre>gem update --system ;\
+gem install --no-rdoc --no-ri bundler ;\
+gem update ;\
+gem cleanup</pre>
+
+<ul><li>Check that RubyGems is &gt;= 2.1.5</li>
+</ul><pre>$ gem --version
+2.2.2</pre>
+
+<ul><li>Install <code>appium_console</code> gem.</li>
+</ul><pre>gem uninstall -aIx appium_lib ;\
+gem uninstall -aIx appium_console ;\
+gem install --no-rdoc --no-ri appium_console</pre>
+
+<ul><li>Install <a href="https://github.com/appium/flaky">flaky</a> gem.</li>
+</ul><pre>gem uninstall -aIx flaky ;\
+gem install --no-rdoc --no-ri flaky</pre>
+
+<ul><li>Install <a href="http://mxcl.github.io/homebrew/">brew</a></li>
+</ul><p><code>ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</code></p>
+
+<ul><li>Install <a href="http://nodejs.org/">nodejs</a> using brew.</li>
+</ul><pre>brew update ;\
+brew upgrade node ;\
+brew install node</pre>
+
+<ul><li>Node should be <code>v0.10.26</code> or better.
+Don't use the big green install button on <a href="http://nodejs.org/">nodejs.org</a> or
+all npm commands will require sudo.</li>
+</ul><p><code>$ node --version</code></p>
+
+<p><code>$ npm --version</code></p>
+
+<ul><li>Install grunt.</li>
+</ul><p><code>npm install -g grunt grunt-cli</code></p>
+
+<ul><li>Run the version command from the appium folder. If you're not in that
+folder, the grunt version will not display.</li>
+</ul><pre>$ grunt --version
+grunt-cli v0.1.13
+grunt v0.4.2</pre>
+
+<ul><li>Install <a href="http://ant.apache.org/">ant</a> if it's not already installed.</li>
+<li>Install <a href="http://maven.apache.org/download.cgi">maven 3.1.1 or better</a> if
+it's not already installed. Old maven will not work.</li>
+</ul><pre>$ ant -version
+Apache Ant(TM) version 1.8.2 compiled on June 20 2012
+$ mvn -version
+Apache Maven 3.1.1 (0728685237757ffbf44136acec0402957f723d9a; 2013-09-17 11:22:22-0400)</pre>
+
+<ul><li>Clone appium</li>
+</ul><p><code>$ git clone git://github.com/appium/appium.git</code></p>
+
+<ul><li>Run reset.sh. When running reset.sh, make sure to be on Xcode 5.0.2 for
+best results. You may have problems if you reset on Xcode 4.6.3 and then
+switch to a newer Xcode.</li>
+</ul><p><code>$ cd appium; ./reset.sh</code></p>
+
+<p>If you see config errors, try cleaning git. <code>git clean -dfx; git reset --hard</code></p>
+
+<p>You can also reset by platform. <code>./reset.sh --ios</code></p>
+
+<ul><li>Authorize for testing. Must run reset.sh as mentioned above before
+running the grunt task. If you're only testing Android, this can be skipped.</li>
+</ul><blockquote>
+<p>sudo `which grunt` authorize</p>
+</blockquote>
+
+<ul><li>Start appium.</li>
+</ul><p><code>$ node .</code></p>
+
+<h4><a class="anchor" id="Bash-Profile" href="#Bash-Profile"><i class="fa fa-link"></i></a>Bash Profile</h4>
+
+<ul><li>You may have to add grunt as well <code>/usr/local/share/npm/bin/grunt</code></li>
+</ul><pre>$ nano ~/.bash_profile
+PATH=$PATH:/Applications/apache-ant-1.8.4/bin
+PATH=$PATH:/usr/local/share/npm/bin/
+export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
+
+export PATH</pre>
+
+<h4><a class="anchor" id="Troubleshooting" href="#Troubleshooting"><i class="fa fa-link"></i></a>Troubleshooting</h4>
+
+<ul><li>If install fails, keep trying to install a few times.</li>
+</ul><p>When using <code>Appium.app</code> make sure to set Appium -&gt; Preferences... -&gt; Check
+"Use External Appium Package" and set it to the path of Appium cloned from GitHub.</p>
+
+<p>Fix permission errors. npm shouldn't require sudo.</p>
+
+<pre>$ brew uninstall node
+$ brew install node
+$ rm -rf ./node_modules
+$ rm -rf "/Users/`whoami`/.npm"
+$ rm -rf /usr/local/lib/node_modules/
+$ ./reset.sh --ios
+$ ./reset.sh --android</pre>
+
+<ul><li><a href="https://gist.github.com/bootstraponline/5580587">Helper bash methods</a></li>
+</ul><h4><a class="anchor" id="SSL-Issues" href="#SSL-Issues"><i class="fa fa-link"></i></a>SSL Issues</h4>
+
+<blockquote>
+<p>Unable to download data from <a href="https://rubygems.org/">https://rubygems.org/</a> - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</p>
+</blockquote>
+
+<ul><li><a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">Fix SSL issues</a> with:</li>
+</ul><pre>$ rvm osx-ssl-certs update all
+$ rvm osx-ssl-certs status all</pre>
+
+<h4><a class="anchor" id="Maven-on-OS-X-10.9" href="#Maven-on-OS-X-10.9"><i class="fa fa-link"></i></a>Maven on OS X 10.9</h4>
+
+<pre>$ brew update
+$ brew install maven</pre>
+
+<h4><a class="anchor" id="Corrupt-ruby-gems" href="#Corrupt-ruby-gems"><i class="fa fa-link"></i></a>Corrupt ruby gems</h4>
+
+<p>If you see:</p>
+
+<blockquote>
+<p>invalid gem: package is corrupt, exception while verifying: undefined method</p>
+</blockquote>
+
+<p>Then run <code>$ rm -rf ~/.rvm</code> and reinstall RVM.</p>
+
+<h4><a class="anchor" id="Java-IDE" href="#Java-IDE"><i class="fa fa-link"></i></a>Java IDE</h4>
+
+<p>Java has a number of popular editors. For this module,
+we'll be using <code>IntelliJ IDEA Community Edition</code>, an open source IDE by
+JetBrains. The software is available <a href="http://www.jetbrains.com/idea/download/">for free download at this link</a>.</p>
+
+<p>If you already have a preferred editor, feel free to continue using it.</p>
+
+<hr /><h4><a class="anchor" id="Helpful-Links" href="#Helpful-Links"><i class="fa fa-link"></i></a>Helpful Links</h4>
+
+<table><thead><tr><th align="right">Link</th>
+<th align="left">Summary</th>
+</tr></thead><tbody><tr><td align="right"><a href="https://www.npmjs.org/">npm</a></td>
+<td align="left">The main registry for npm packages. Appium is published here.</td>
+</tr><tr><td align="right"><a href="http://rubygems.org/">rubygems</a></td>
+<td align="left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
+</tr><tr><td align="right"><a href="http://rvm.io/">RVM</a></td>
+<td align="left">RVM's homepage. Extensive documentation is available.</td>
+</tr><tr><td align="right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
+<td align="left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
+</tr></tbody></table><hr /><h4><a class="anchor" id="Summary" href="#Summary"><i class="fa fa-link"></i></a>Summary</h4>
+
+<p>We learned about the appium project and how it's useful for automating mobile
+applications. Then we installed all the necessary software to begin
+automation. Finally, helpful links were reviewed.</p>
+
+<p>In the next chapter, we'll look at writing tests interactively using a console.</p>
+
+<hr /><h3><a class="anchor" id="Chapter-2---Appium-Ruby-Console" href="#Chapter-2---Appium-Ruby-Console"><i class="fa fa-link"></i></a>Chapter 2 - Appium Ruby Console</h3>
+
+<h4><a class="anchor" id="2-Introduction" href="#2-Introduction"><i class="fa fa-link"></i></a>Introduction</h4>
+
+<p>A read-eval-print loop, REPL, is a great way to learn a new technology.
+In this chapter, we'll be using the Appium Ruby Console (ARC) to write tests.</p>
+
+<p>An open source mobile app will be used to demonstrate the standard test workflow.
+We'll also look at a desktop app that makes writing tests a bit easier.</p>
+
+<hr /><h4><a class="anchor" id="Compiling-the-iOS-sample-app" href="#Compiling-the-iOS-sample-app"><i class="fa fa-link"></i></a>Compiling the iOS sample app</h4>
+
+<p><code>cd</code> into the appium repository root. Running <code>./reset.sh --ios --dev</code> will
+ build the sample iOS app UICatalog.</p>
+
+<p>The UICatalog app is <a href="https://developer.apple.com/library/ios/samplecode/UICatalog/UICatalog.zip">provided by Apple</a>.</p>
+
+<p>After seeing <code>---- reset.sh completed successfully ----</code>, you'll find <code>UICatalog.app</code>
+at this location:</p>
+
+<blockquote>
+<p>/appium/sample-code/apps/UICatalog/build/Release-iphonesimulator/UICatalog.app</p>
+</blockquote>
+
+<p>It's important to note that this app is built for the simulator.
+Builds for physical iOS devices only work on physical iOS devices.</p>
+
+<p>Appium supports physical devices however this tutorial focuses
+on virtual devices.</p>
+
+<hr /><h4><a class="anchor" id="Prebuilt-iOS-Sample-App" href="#Prebuilt-iOS-Sample-App"><i class="fa fa-link"></i></a>Prebuilt iOS Sample App</h4>
+
+<p>To make it easier to get started, I've uploaded a prebuilt version of the
+iOS sample app. If for some reason this app doesn't work on your system, you
+may need to build from source. Instructions for building the sample app from
+source are in the previous lesson.</p>
+
+<p>UICatalog.app is available <a href="https://github.com/appium/ruby_lib/raw/master/ruby_lib_ios/UICatalog.app.zip">as a zip</a>. I
+recommend unzipping the app before using it with appium.</p>
+
+<hr /><h4><a class="anchor" id="Starting-the-Console" href="#Starting-the-Console"><i class="fa fa-link"></i></a>Starting the Console</h4>
+
+<p>To start the Appium Ruby Console for use with iOS, the app path is required.</p>
+
+<p>In this case we're developing locally, so let's create an appium.txt with
+that path.</p>
+
+<pre>$ nano appium.txt
+[caps]
+platformName = "ios"
+app = "./UICatalog.app"</pre>
+
+<p>The appium.txt contains two important pieces of information.</p>
+
+<p>platformName is the platform we're automating. In this case,
+we're going to automate ios.</p>
+
+<p>app is the path to UICatalog.app. The ruby console is able to parse
+relative paths. This path will then be converted to an absolute path which
+appium uses to identify which app to install on the simulator.</p>
+
+<p>In a new terminal tab, start the appium server using <code>node .</code> In a different
+tab, run the <code>arc</code> command from within the directory containing appium.txt.
+The arc console will read appium.txt, launch the iOS simulator,
+and allow you to enter commands.</p>
+
+<hr /><h4><a class="anchor" id="Page-Command" href="#Page-Command"><i class="fa fa-link"></i></a>Page Command</h4>
+
+<p>With the console started, the next step is to begin automation.
+The <code>page</code> command prints a list of elements that are of interest.</p>
+
+<pre>[1] pry(main)&gt; page
+post /execute
+{
+    :script =&gt; "UIATarget.localTarget().frontMostApp().windows()[0].getTree()"
+}
+post /execute
+{
+    :script =&gt; "UIATarget.localTarget().frontMostApp().windows()[1].getTree()"
+}
+post /execute
+{
+    :script =&gt; "mobile: getStrings"
+}
+UIANavigationBar
+   name: UICatalog
+UIAStaticText
+   name, label, value: UICatalog
+UIATableView
+   name, label: Empty list
+   value: rows 1 to 10 of 12
+UIATableCell
+   name: Buttons, Various uses of UIButton
+UIAStaticText
+   name, label: Buttons, Various uses of UIButton
+UIATableCell
+   name: Controls, Various uses of UIControl
+UIAStaticText
+   name, label: Controls, Various uses of UIControl
+UIATableCell
+   name: TextFields, Uses of UITextField
+UIAStaticText
+   name, label: TextFields, Uses of UITextField
+UIATableCell
+   name: SearchBar, Use of UISearchBar
+UIAStaticText
+   name, label: SearchBar, Use of UISearchBar
+UIATableCell
+   name: TextView, Use of UITextField
+UIAStaticText
+   name, label: TextView, Use of UITextField
+UIATableCell
+   name: Pickers, Uses of UIDatePicker, UIPickerView
+UIAStaticText
+   name, label: Pickers, Uses of UIDatePicker, UIPickerView
+UIATableCell
+   name: Images, Use of UIImageView
+UIAStaticText
+   name, label: Images, Use of UIImageView
+UIATableCell
+   name: Web, Use of UIWebView
+UIAStaticText
+   name, label: Web, Use of UIWebView
+UIATableCell
+   name: Segment, Various uses of UISegmentedControl
+UIAStaticText
+   name, label: Segment, Various uses of UISegmentedControl
+UIATableCell
+   name: Toolbar, Uses of UIToolbar
+UIAStaticText
+   name, label: Toolbar, Uses of UIToolbar</pre>
+
+<p>Let's review in detail what this output means.</p>
+
+<p><code>[1] pry(main)&gt; page</code> The 1 tells us this is the first command we've entered
+during this pry session. The terminal will show <code>[2] pry(main)&gt;</code> which means
+it's ready for the second command. Pry is an open source
+<a href="http://pryrepl.org/">runtime development console</a> that's used by appium
+ruby console.</p>
+
+<p>The next set of information is the network traffic.</p>
+
+<pre>{
+    :script =&gt; "UIATarget.localTarget().frontMostApp().windows()[0].getTree()"
+}
+post /execute
+{
+    :script =&gt; "UIATarget.localTarget().frontMostApp().windows()[1].getTree()"
+}
+post /execute
+{
+    :script =&gt; "mobile: getStrings"
+}</pre>
+
+<p>In response to the page command, three network requests were sent. The
+<a href="http://rubygems.org/gems/selenium-webdriver">selenium-webdriver gem</a> is used
+to generate these requests.</p>
+
+<p>After that is the result of the page command.</p>
+
+<pre>UIAStaticText
+   name, label, value: UICatalog</pre>
+
+<p><code>UIAStaticText</code> is the <a href="https://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIAStaticTextClassReference/UIAStaticText/UIAStaticText.html">iOS specific name</a>
+for the element.</p>
+
+<p>Under each element name is a list of properties.</p>
+
+<pre>UIAStaticText
+   name, label, value: UICatalog</pre>
+
+<p>In this case we see that the name, label, and value are all equal to UICatalog.</p>
+
+<pre>&gt; name('UICatalog')
+#<:webdriver::element:0x..f8575cfe515fb47ea id="0"></:webdriver::element:0x..f8575cfe515fb47ea></pre>
+
+<p>The name command in the appium ruby gem will search for a partial match on
+either the name or the label. Once we've found the element,
+then we can access the value attribute.</p>
+
+<p>To find by value, we'd use:</p>
+
+<pre>&gt; s_text 'UICatalog'
+#<:webdriver::element:0x5e4e2159acc099a id="3"></:webdriver::element:0x5e4e2159acc099a></pre>
+
+<p>This finds a static text that contains UICatalog. If we're looking for an
+exact match, then s_text_exact works.</p>
+
+<pre>&gt; s_text_exact 'UICatalog'
+#<:webdriver::element:0x5e4e2159acc099a id="3"></:webdriver::element:0x5e4e2159acc099a></pre>
+
+<p>These helper methods <a href="https://github.com/appium/ruby_lib/tree/master/docs">are documented on GitHub</a>.</p>
+
+<p>To view all possible elements, there's a <code>source</code> command. The <code>page_class</code>
+command will give you an overview of what classes exist on the current page.</p>
+
+<pre>&gt; page_class
+13x UIAStaticText
+12x UIATableCell
+4x UIAElement
+3x UIAWindow
+2x UIAImage
+1x UIATableView
+1x UIANavigationBar
+1x UIAStatusBar</pre>
+
+<p>The page command excels at identifying the elements you're most likely
+interested in automating. I encourage you to read through the existing docs
+and try the methods on different elements.</p>
+
+<hr /><h4><a class="anchor" id="Ending-the-session" href="#Ending-the-session"><i class="fa fa-link"></i></a>Ending the session</h4>
+
+<p>Once we're done with a testing session, it's very important to cleanly quit.
+If a session is not terminated properly then appium will consider the session
+to still be in progress. This blocks all future sessions from working.</p>
+
+<p>In the appium ruby console, the best way to quit the session is by using the
+<code>x</code> command. The <code>x</code> command first ends the webdriver session,
+and then ends the console.</p>
+
+<p>If you desire to end only the webdriver session and remain in the console,
+use driver_quit.</p>
+
+<p>It's also important to end sessions when running tests outside the console.
+All the selenium bindings offer a quit method. This should be invoked once
+the testing session is over.</p>
+
+<hr /><h4><a class="anchor" id="Appium.app-Inspector" href="#Appium.app-Inspector"><i class="fa fa-link"></i></a>Appium.app Inspector</h4>
+
+<p>We've covered finding elements using the page command on the terminal.
+Appium also has a GUI tool on OS X called Appium.app.</p>
+
+<p>Appium.app enables visual exploration of the application to identify elements.
+In addition, gestures are supported and can be exported to working code.</p>
+
+<p>When using Appium.app for the first time, click the checkbox button. This
+will activate appium doctor. If you don't see all green checkmarks,
+then something is incorrect with your system configuration. Make the
+necessary changes, press the checkbox button again, and then proceed when
+everything is passing.</p>
+
+<p><img src="appium_doctor.png" alt="" /></p>
+
+<p>By default Appium.app uses a bundled version of appium. If you're running the
+newest appium version from source, then click <code>Appium</code> -&gt; <code>Preferences</code> and
+set <code>Use External Appium Package</code>.</p>
+
+<p><img src="appium_external.png" alt="" /></p>
+
+<p>While most interactions can be done completely within the console, Appium.app is
+great for identifying the proper values for appium's gesture commands.</p>
+
+<p>Appium.app's inspector works on iOS. The data is based on the same source as
+the page command that we used in the last lesson.</p>
+
+<p><img src="inspector_ios.png" alt="" /></p>
+
+<hr /><h4><a class="anchor" id="2-Helpful-Links" href="#2-Helpful-Links"><i class="fa fa-link"></i></a>Helpful Links</h4>
+
+<table><thead><tr><th align="right">Link</th>
+<th align="left">Summary</th>
+</tr></thead><tbody><tr><td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
+<td align="left">New versions of Appium.app are available on the appium homepage.</td>
+</tr><tr><td align="right"><a href="https://github.com/appium/ruby_lib">appium_lib gem</a></td>
+<td align="left">Appium's ruby library is on GitHub.</td>
+</tr><tr><td align="right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
+<td align="left">Appium's Ruby Console is also on GitHub.</td>
+</tr><tr><td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td align="left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
+</tr></tbody></table><hr /><h4><a class="anchor" id="2-Summary" href="#2-Summary"><i class="fa fa-link"></i></a>Summary</h4>
+
+<p>We covered using the ruby console to interactively explore apps and write
+tests. An open source iOS app was used for testing. In addition to the terminal
+workflow, we covered Appium.app which is an excellent visual based tool.</p>
+
+<hr /><h3><a class="anchor" id="Chapter-3---Writing-your-first-test" href="#Chapter-3---Writing-your-first-test"><i class="fa fa-link"></i></a>Chapter 3 - Writing your first test</h3>
+
+<h4><a class="anchor" id="3-Introduction" href="#3-Introduction"><i class="fa fa-link"></i></a>Introduction</h4>
+
+<p>Now that we've looked at the commands in the console,
+it's time to write our first test. This involves using a test framework,
+following the page object pattern, and running the test automatically.</p>
+
+<hr /><h4><a class="anchor" id="Automating-a-simple-action" href="#Automating-a-simple-action"><i class="fa fa-link"></i></a>Automating a simple action</h4>
+
+<p>The commands from the Ruby console are different from those in the Java
+bindings. To make this easier, the java_ios folder contains a Helpers class.
+Convenience methods such as s_text, back, and wait have been added. They're
+generally intended to mimic the code we've looked at in the Ruby console.</p>
+
+<p>The basic structure of the UICatalog test app is that clicking on the text
+brings you to a dedicated page about that text. Buttons triggers the Buttons
+page, Controls triggers Controls, and so on.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/java_ios">java_ios</a>
+directory to your computer.</p>
+
+<blockquote>
+<p>git clone <a href="https://github.com/appium/tutorial.git">https://github.com/appium/tutorial.git</a></p>
+</blockquote>
+
+<p>The project is setup using maven.</p>
+
+<ul><li>To use with NetBeans, go to <code>File</code> then <code>Open Project</code> and select the folder.</li>
+<li>To use with Eclipse, go to <code>File</code> then <code>Import</code> and select <code>Existing Maven Projects</code></li>
+<li>To use with IntelliJ, go to <code>File</code> then <code>Open</code> and select the <code>pom.xml</code></li>
+<li>To use with the command line, <code>mvn clean test</code> will run all the tests.</li>
+</ul><p>We're going to verify each element brings us to the correct page.</p>
+
+<div class="highlight"><pre><span class="c1"># ruby console</span>
+<span class="n">s_text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span>
+<span class="n">s_text_exact</span> <span class="s1">'Buttons'</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// java</span>
+<span class="n">s_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">s_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">);</span>
+</pre></div>
+
+<p>For the first entry, we click on Buttons and then assert that the buttons
+page is displayed. The code is valid however there's an issue related to
+timing.</p>
+
+<p>In the console, the implicit wait is turned to zero for immediate feedback.
+That means when an element isn't found the test ends immediately because an
+element not found exception is raised.</p>
+
+<p>To overcome these timing problems, the wait helper method is useful.</p>
+
+<div class="highlight"><pre><span class="c1"># ruby console</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="s1">'Buttons'</span> <span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// java</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
+</pre></div>
+
+<p>Now the code will wait up to 30 seconds for the command to succeed. If it
+succeeds then the next line is executed immediately. If the
+command is still failing after 30 seconds, an error is raised. If this error
+is not rescued then the test will end in failure.</p>
+
+<p>Another problem with the test code is that we're depending on the exact text
+value. When the app changes, our tests will break.</p>
+
+<div class="highlight"><pre><span class="c1"># ruby console</span>
+<span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+
+<span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="o">.</span><span class="n">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="n">page_title</span> <span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// java</span>
+<span class="n">WebElement</span> <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+<span class="n">String</span> <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">];</span>
+
+<span class="n">cell_1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">page_title</span><span class="o">));</span>
+</pre></div>
+
+<p>In this code, we're finding the first text by index. Index 2 contains the
+first cell. Index 1 is the table header. After that we're extracting the name
+and dynamically finding the title <code>Buttons</code>. The test will continue working
+even after small changes to the string values.</p>
+
+<p>To conclude this lesson, we'll look at the code to automate all 12 cells.</p>
+
+<div class="highlight"><pre><span class="c1"># ruby console</span>
+<span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'cell'</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="o">.</span><span class="n">name</span> <span class="p">}</span>
+
+<span class="n">cell_names</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span><span class="o">.</span><span class="n">click</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="nb">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span><span class="o">.</span><span class="n">first</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// java</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">cell_names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">tags</span><span class="o">(</span><span class="s">"cell"</span><span class="o">))</span> <span class="o">{</span>
+  <span class="n">cell_names</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">name</span> <span class="o">:</span> <span class="n">cell_names</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">]));</span>
+  <span class="n">back</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>Notice that we didn't have to scroll to the elements that were off screen. By
+default, we're able to access off screen elements and they're scrolled
+into view.</p>
+
+<p>The Java code for the examples is in <code>/java_ios/src/test/java/appium/tutorial/ios/AutomatingASimpleActionTest.java</code>
+The tests from that file may be run from the command line with:</p>
+
+<blockquote>
+<p>mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test</p>
+</blockquote>
+
+<hr /><h4><a class="anchor" id="Page-Object-Pattern" href="#Page-Object-Pattern"><i class="fa fa-link"></i></a>Page Object Pattern</h4>
+
+<p>Now that we have a test fully written, it's time to apply the
+<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.
+For this tutorial, we're going to implement the page object pattern using
+abstract classes and static helper methods.</p>
+
+<p>The page object pattern is language independent and applies to any Selenium
+testing, not just appium. The idea is to create an abstraction at the page
+level. Each page knows how to perform the relevant actions.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/java_ios">java_ios</a>
+directory to your computer.</p>
+
+<blockquote>
+<p>git clone <a href="https://github.com/appium/tutorial.git">https://github.com/appium/tutorial.git</a></p>
+</blockquote>
+
+<p>The project is setup using maven.</p>
+
+<ul><li>To use with NetBeans, go to <code>File</code> then <code>Open Project</code> and select the folder.</li>
+<li>To use with Eclipse, go to <code>File</code> then <code>Import</code> and select <code>Existing Maven Projects</code></li>
+<li>To use with IntelliJ, go to <code>File</code> then <code>Open</code> and select the <code>pom.xml</code></li>
+<li>To use with the command line, <code>mvn clean test</code> will run all the tests.</li>
+</ul><p>The pages are contained within the page folder, and the test inside specs.
+The test code is:</p>
+
+<div class="highlight"><pre><span class="c1">// PageObjectPatternTest.java</span>
+<span class="n">home</span><span class="o">.</span><span class="na">buttonsClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+
+<span class="n">home</span><span class="o">.</span><span class="na">controlsClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+</pre></div>
+
+<p>This says from the home page, find the buttons element and click it. Then go
+back, find the controls element and click it, and finally go back once more.
+The page objects are implemented using abstract classes.</p>
+
+<div class="highlight"><pre><span class="c1">// HomePage.java</span>
+<span class="kn">package</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">page</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.By</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Helpers</span><span class="o">.</span><span class="na">element</span><span class="o">;</span>
+
+<span class="cm">/** Page object for the home page **/</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
+</pre></div>
+
+<p>We're using a helpers class to find elements using Selenium's By class. The
+element method is imported statically so <code>element()</code> can be used instead of
+<code>Helpers.element()</code>.</p>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">buttonsClick</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">loaded</span><span class="o">();</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>This is the first method in the HomePage class. The method starts by asserting
+that the app is on the home page. <code>loaded();</code> in this context is the same as
+<code>HomePage.loaded();</code> After that, we're finding the "various uses of UIButton"
+element by name then clicking on it. Finally, the code asserts the app is on
+the buttons page. The ButtonsPage page object defines the assert methods:</p>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>We're looking for the title to verify the currently loaded page is the buttons
+page. The title element has a name attribute of "Buttons" so that's how we're
+finding it.</p>
+
+<p>I encourage you to review the full source of the example. This is one way to
+implement the page object pattern. There are many other alternatives such as the
+<a href="https://code.google.com/p/selenium/wiki/PageFactory">PageFactory</a> included in
+Selenium's Java bindings.</p>
+
+<hr /><h4><a class="anchor" id="Running-the-test-with-Maven" href="#Running-the-test-with-Maven"><i class="fa fa-link"></i></a>Running the test with Maven</h4>
+
+<p>Now that we have the code written and it's following best practices,
+let's investigate a new way to run it.</p>
+
+<blockquote>
+<p>mvn -Dtest=appium.tutorial.ios.PageObjectPatternTest clean test</p>
+</blockquote>
+
+<p>We're invoking maven and passing the fully qualified name of the
+PageObjectPatternTest class. Then we're running the clean command to make
+sure old test code is deleted. Finally the test command runs which will
+execute each test that has the JUnit <code>@org.junit.Test</code> annotation.</p>
+
+<p>Running a single test this way is great for quickly verifying the code works.
+To run all the tests, there's the <code>mvn clean test</code> command. First clean is
+run, then all the tests are executed. We're going to investigate the appium
+server output for the PageObjectPatternTest test.</p>
+
+<pre>debug: Request received with params:
+{"desiredCapabilities"=&gt;
+  {"platform"=&gt;"OS X 10.9",
+   "app"=&gt;"/tutorial/modules/source/java_ios/UICatalog.app",
+   "device"=&gt;"iPhone Simulator",
+   "version"=&gt;"7.1"}}</pre>
+
+<p>The desired capabilities tell appium what device to use,
+the app to install, and the requested simulator version.</p>
+
+<div class="highlight"><pre><span class="c1">// AppiumTest.java</span>
+<span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+</pre></div>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/timeouts/implicit_wait
+debug: Request received with params: {"ms":30000}
+info: Set iOS implicit wait to 30000ms</pre>
+
+<p>The <code>driver.manage().timeouts()</code> line of Java code requested that appium wait
+30 seconds for elements to appear before giving up.</p>
+
+<div class="highlight"><pre><span class="c1">// HomePage.java</span>
+<span class="n">buttonsClick</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">loaded</span><span class="o">();</span>
+  <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"UICatalog"}</pre>
+The first method that executes is buttonsClick. The logs show that loaded is
+checking for the UICatalog name to verify the homepage is displayed.
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Buttons, Various uses of UIButton"}</pre>
+
+<p>Next the code looks for the "Various uses of UIButton" element.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/1/click
+debug: Request received with params: {"id":"1"}</pre>
+
+<p>That element is found, assigned the id of 1, and then clicked.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Buttons"}</pre>
+
+<p>Now the code looks to see if the Buttons page has loaded.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back</pre>
+
+<p>After finding the buttons page, it's time to return to the home page using
+<code>back</code>.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"UICatalog"}</pre>
+
+<p>The code verifies we successfully returned to the home page.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Controls, Various uses of UIControl"}
+debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/4/click</pre>
+
+<p>Now the "uses of UIControl" is found and clicked.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Controls"}</pre>
+
+<p>Searching for "Controls" verifies we've made it to the controls page.</p>
+
+<pre>debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back</pre>
+
+<p>Finally, we're returning to the home page once more and the test is complete.</p>
+
+<pre>-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.ios.PageObjectPatternTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.95 sec - in appium.tutorial.ios.PageObjectPatternTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0</pre>
+
+<p>At the end of the test, statistics are displayed. This is a successful run
+because there are no failures, errors, or skips.</p>
+
+<pre>DELETE /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692 200 794ms - 89b</pre>
+
+<p>The final <code>delete</code> is the result of calling driver.quit which tells appium to
+end the session.</p>
+
+<hr /><h4><a class="anchor" id="3-Helpful-Links" href="#3-Helpful-Links"><i class="fa fa-link"></i></a>Helpful Links</h4>
+
+<table><thead><tr><th align="right">Link</th>
+<th align="left">Summary</th>
+</tr></thead><tbody><tr><td align="right"><a href="http://maven.apache.org/">Apache Maven</a></td>
+<td align="left">Maven's homepage contains extensive documentation</td>
+</tr><tr><td align="right"><a href="http://junit.org/">JUnit</a></td>
+<td align="left">JUnit is on GitHub</td>
+</tr><tr><td align="right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td align="left">Selenium's wiki has an excellent article about page objects</td>
+</tr><tr><td align="right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple's uicatalog</a></td>
+<td align="left">Apple hosts the sample code for the UICatalog app we've been testing</td>
+</tr><tr><td align="right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
+<td align="left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
+</tr><tr><td align="right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
+<td align="left">Eclipse is another popular IDE</td>
+</tr><tr><td align="right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
+<td align="left">NetBeans is a Java IDE by Oracle</td>
+</tr><tr><td align="right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
+<td align="left">If you're developing for android, you may already have Android Studio installed.</td>
+</tr><tr><td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td align="left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
+</tr></tbody></table><hr /><h4><a class="anchor" id="3-Summary" href="#3-Summary"><i class="fa fa-link"></i></a>Summary</h4>
+
+<p>We successfully wrote a complete test and applied the page object pattern to it.
+After that, maven was used to run the test. The appium server output was
+reviewed to understand how the Java code is translated into selenium commands.</p>
+
+<p>In the next chapter, we're going to look at even more ways to run tests.</p>
+
+<hr /><h3><a class="anchor" id="Chapter-4---Running-tests" href="#Chapter-4---Running-tests"><i class="fa fa-link"></i></a>Chapter 4 - Running tests</h3>
+
+<h4><a class="anchor" id="4-Introduction" href="#4-Introduction"><i class="fa fa-link"></i></a>Introduction</h4>
+
+<p>So far we've looked at running the tests using maven. In this chapter we'll
+cover running via Jenkins, and on Sauce.</p>
+
+<hr /><h4><a class="anchor" id="Running-locally" href="#Running-locally"><i class="fa fa-link"></i></a>Running locally</h4>
+
+<p>Using maven is one way to run tests locally.</p>
+
+<blockquote>
+<p>mvn clean test</p>
+</blockquote>
+
+<p>The above command will delete old code then run all the tests.</p>
+
+<blockquote>
+<p>mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test</p>
+</blockquote>
+
+<p><code>-D</code> sets the test property to the fully qualified class name of the test.
+Then clean is invoked, and test runs only the single test.</p>
+
+<hr /><h4><a class="anchor" id="Running-using-Jenkins-CI" href="#Running-using-Jenkins-CI"><i class="fa fa-link"></i></a>Running using Jenkins CI</h4>
+
+<p>Jenkins is a popular open source CI server. Appium works with any CI.</p>
+
+<p>A simple way to get started is by downloading the Jenkins war.</p>
+
+<blockquote>
+<p><a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+</blockquote>
+
+<p>then run</p>
+
+<blockquote>
+<p>java -jar jenkins.war</p>
+</blockquote>
+
+<p>now open a web browser and visit <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+
+<p>Click <code>New Item</code>, enter <code>Appium job</code> in <code>Item name</code>,
+select <code>Build a free-style software project</code> then click <code>OK</code>.</p>
+
+<p>Scroll down to Build, and press <code>Add build step</code>, then select <code>Execute shell</code>
+. Add the following:</p>
+
+<pre>#!/bin/bash --login
+
+killall -9 "iPhone Simulator" &amp;&gt; /dev/null
+killall -9 node &amp;&gt; /dev/null
+killall -9 instruments &amp;&gt; /dev/null
+
+cd $APPIUM_HOME
+node . &amp;&gt; /dev/null &amp;
+
+cd ~/tutorial/modules/source/java_ios
+mvn clean test
+
+# end appium when the job is done to prevent
+# leaking file descriptors
+killall -9 node &amp;&gt; /dev/null</pre>
+
+<p>Make sure that APPIUM_HOME is set in your <code>~/.bash_profile</code></p>
+
+<blockquote>
+<p>open ~/.bash_profile
+export APPIUM_HOME="path/to/appium"</p>
+</blockquote>
+
+<p>Press <code>OK</code>, and then <code>Build Now</code> near the top left of the page. Click on the
+build link inside the <code>Build History</code> tab. Finally select <code>Console Output</code>.
+You should see results in the Jenkins console once the job completes.</p>
+
+<pre>-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.ios.AutomatingASimpleActionTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 87.175 sec - in appium.tutorial.ios.AutomatingASimpleActionTest
+Running appium.tutorial.ios.PageObjectPatternTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.115 sec - in appium.tutorial.ios.PageObjectPatternTest
+
+Results :
+
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1:47.262s
+[INFO] Finished at: Sat Mar 22 15:14:14 EDT 2014
+[INFO] Final Memory: 16M/114M
+[INFO] ------------------------------------------------------------------------
+Finished: SUCCESS</pre>
+
+<p>Appium works well in CI. For a proper setup, the Jenkins master node would be
+on a different physical machine. The OS X executor would then attach to the
+master node. The code would be pulled from GitHub using the Git plugin. Note
+that for iOS automation to work, Jenkins should be setup as a LaunchAgent
+instead of a LaunchDaemon.</p>
+
+<p>In the next lesson, we'll look at running the same test on Sauce Labs. This
+means we don't have to worry about setting up OS X build nodes or starting
+the appium server.</p>
+
+<hr /><h4><a class="anchor" id="Running-on-Sauce" href="#Running-on-Sauce"><i class="fa fa-link"></i></a>Running on Sauce</h4>
+
+<p>All the tools and techniques we've covered so far produce tests that run well
+on Sauce Labs.</p>
+
+<p>Testing is best done by using a continuous integration software such as Jenkins.</p>
+
+<p>With a few tweaks to the Jenkins setup we used in the previous lesson,
+we'll be running on Sauce very quickly. <code>upload.rb</code> takes care of sending the
+app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">storage API</a>.</p>
+
+<pre>#!/bin/bash --login
+cd ~/tutorial/modules/source/java_ios
+export SAUCE_USER_NAME="your username from sauce"
+export SAUCE_API_KEY="your accesskey from sauce"
+
+mvn -Dsauce=true clean test</pre>
+
+<p>Now when we run the job, instead of using a local simulator,
+it'll run on the Sauce cloud.</p>
+
+<pre>-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.ios.AutomatingASimpleActionTest
+  test: one https://saucelabs.com/tests/59c95c8df1104065a051de31095f97fe
+  test: two https://saucelabs.com/tests/a882c59795d546578c633dee0f11c6e3
+  test: four https://saucelabs.com/tests/be89de1f417b44dea2d806350ff0f296
+  test: three https://saucelabs.com/tests/413d750a36004d1f94603c2614011704
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 222.53 sec - in appium.tutorial.ios.AutomatingASimpleActionTest
+Running appium.tutorial.ios.PageObjectPatternTest
+  test: pageObject https://saucelabs.com/tests/162533a139bd4bc6b436e51a4de63815
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.818 sec - in appium.tutorial.ios.PageObjectPatternTest
+
+Results :
+
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4:36.305s
+[INFO] Finished at: Tue Apr 01 23:20:40 EDT 2014
+[INFO] Final Memory: 16M/185M
+[INFO] ------------------------------------------------------------------------
+Finished: SUCCESS</pre>
+
+<hr /><h4><a class="anchor" id="4-Helpful-Links" href="#4-Helpful-Links"><i class="fa fa-link"></i></a>Helpful Links</h4>
+
+<table><thead><tr><th align="right">Link</th>
+<th align="left">Summary</th>
+</tr></thead><tbody><tr><td align="right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td align="left">The Jenkins homepage contains the latest releases and additional information.</td>
+</tr><tr><td align="right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td align="left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+</tr><tr><td align="right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td align="left">The objective c code for recording Android/iOS is on GitHub</td>
+</tr><tr><td align="right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td align="left">Sauce has great documentation for getting started on their platform.</td>
+</tr></tbody></table><hr /><h4><a class="anchor" id="4-Summary" href="#4-Summary"><i class="fa fa-link"></i></a>Summary</h4>
+
+<p>We looked at the running locally with maven from the terminal,
+maven via Jenkins, and using Sauce.</p>
+
+<p>In the final chapter, we'll look at some additional resources for maintaining and
+writing production level automation.</p>
+
+<hr /><h3><a class="anchor" id="Chapter-5---Conclusion" href="#Chapter-5---Conclusion"><i class="fa fa-link"></i></a>Chapter 5 - Conclusion</h3>
+
+<h4><a class="anchor" id="5-Introduction" href="#5-Introduction"><i class="fa fa-link"></i></a>Introduction</h4>
+
+<p>In this final chapter, we'll look at resources, support,
+and how to search the source code.</p>
+
+<hr /><h4><a class="anchor" id="Additional-Resources" href="#Additional-Resources"><i class="fa fa-link"></i></a>Additional Resources</h4>
+
+<p>Appium relies on Apple's UI Automation for iOS support.</p>
+
+<ul><li>Google posted about how they test <a href="http://googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html">mobile apps</a> is also available.</li>
+<li><a href="https://www.youtube.com/watch?v=1J0aXDbjiUE">GTAC 2013: Appium: Automation for Mobile Apps</a>
+
+<ul><li>Jonathan Lipps, the chief architect of Appium, explains mobile app automation.</li>
+</ul></li>
+<li>Apple presented "Automating User Interface Testing with Instruments" at the <a href="https://developer.apple.com/videos/wwdc/2010/">2010 wwdc</a>.</li>
+<li>Documentation for <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UI Automation JavaScript</a></li>
+<li>Apple's <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/iPhoneAccessibility/Accessibility_on_iPhone/Accessibility_on_iPhone.html">iOS Accessibility Guide</a>
+
+<ul><li>If your app follows accessibility best practices, it'll be much easier to automate.</li>
+</ul></li>
+</ul><hr /><h4><a class="anchor" id="Community-Support" href="#Community-Support"><i class="fa fa-link"></i></a>Community Support</h4>
+
+<p>Appium has community support in the form of a
+<a href="https://groups.google.com/d/forum/appium-discuss">Google discussion group</a>.</p>
+
+<p>Make sure to read through the
+<a href="https://github.com/appium/appium/blob/master/docs/troubleshooting.md">online documentation</a>
+before posting a question. In addition to the documentation, make sure to search
+the group archive to see if your question has already been asked.</p>
+
+<p>You may want to review <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>
+if you're new to online discussion groups.</p>
+
+<hr /><h4><a class="anchor" id="Professional-Support" href="#Professional-Support"><i class="fa fa-link"></i></a>Professional Support</h4>
+
+<p>Sauce Labs offers professional support for appium on their hosted cloud. If
+you are a Sauce Labs customer and encounter an issue on the Sauce platform,
+then make sure to open a support ticket.</p>
+
+<p>Apple supports UI Automation so if there are bugs in the Apple software that
+reproduce without using appium,
+<a href="https://developer.apple.com/bug-reporting/">file them with apple</a>. As Apple
+keeps all bugs private, it's helpful to also duplicate the report to
+<a href="http://openradar.appspot.com/">open radar</a>.</p>
+
+<hr /><h4><a class="anchor" id="Searching-the-Source-Code" href="#Searching-the-Source-Code"><i class="fa fa-link"></i></a>Searching the Source Code</h4>
+
+<p>Appium is fully open source. Very few parts of the automation stack are not
+available on GitHub. The Apple tooling, for example Instruments,
+is proprietary. For everything else, GitHub is an amazing tool to look at the
+source.</p>
+
+<p>If we're interested to see what happens when we type "page" in the Ruby
+console, the answer is only
+<a href="https://github.com/appium/ruby_lib/search?l=ruby&amp;q=%22def+page%22&amp;type=Code">a search away</a>.
+Notice that quotes are used for "def page" so that we're looking for a ruby method starting with page.</p>
+
+<p>Selenium and all the official bindings are also on GitHub. Here's a
+<a href="https://github.com/SeleniumHQ/selenium/search?l=ruby&amp;q=%22status%22&amp;type=Code">sample search</a>
+showing that the Ruby bindings support the status command.</p>
+
+<p>appium is composed of modules. The module related to iOS automation is
+appium-uiauto. To find out what happens on iOS when we request the page source, search for
+<a href="https://github.com/appium/appium-uiauto/search?q=getTree&amp;ref=cmdform">getTree</a>.
+From there we can tell what the source contains and how it's built.</p>
+
+<p>If we're interested to see a list of iOS tag names and what they map to,
+<a href="https://github.com/jaykz52/mechanic/search?q=setup+a+map&amp;type=Code">search for setup a map</a>
+on the mechanic project.</p>
+
+<hr /><h4><a class="anchor" id="5-Helpful-Links" href="#5-Helpful-Links"><i class="fa fa-link"></i></a>Helpful Links</h4>
+
+<table><thead><tr><th align="right">Link</th>
+<th align="left">Summary</th>
+</tr></thead><tbody><tr><td align="right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
+<td align="left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
+</tr><tr><td align="right"><a href="https://github.com/">GitHub</a></td>
+<td align="left">GitHub contains all the appium source code.</td>
+</tr><tr><td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
+<td align="left">Appium has documentation inside the git repository</td>
+</tr><tr><td align="right"><a href="https://developer.apple.com/wwdc/videos/">Apple's developer videos</a></td>
+<td align="left">Apple posts session videos from WWDC</td>
+</tr></tbody></table><hr /><h4><a class="anchor" id="5-Summary" href="#5-Summary"><i class="fa fa-link"></i></a>Summary</h4>
+
+<p>We covered a number of resources from Apple WWDC videos to the Google
+discussion group. In addition to community support, appium is available for
+professional support from companies such as Sauce Labs. Finally, we looked at
+ways to search the relevant source code to answer questions about automation.</p>
+
+<hr />
+</div>
+{% include footer.html %}
+</body>
+</html>

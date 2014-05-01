@@ -106,6 +106,7 @@ module Appium
       rm_rf tutorial_path
       mkdir_p tutorial_path
 
+      puts "Publishing to: #{tutorial_path}"
       _publish tutorial_path # all modules are now in tutorial_path
 
       # copy css for entire tutorial (all modules)
