@@ -1,5 +1,5 @@
 ---
-permalink: /tutorials.html
+permalink: /index.html
 layout: default
 title: Tutorials for appium
 description: Ruby and Java lessons for automating iOS and Android
