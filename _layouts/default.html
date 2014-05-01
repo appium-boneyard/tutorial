@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+{% include navbar.html %}
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>{{ page.title }}</h1>
+        <p class="lead">{{ page.description }}</p>
+    </div>
+</header>
+
+
+<div class="container">
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+        <div class="span9" id="readmeMarkdown">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+{% include footer.html %}
+</body>
+</html>
