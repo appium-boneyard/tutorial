@@ -1,8 +1,8 @@
-#### Install Android
+## Install Android
 
 The following instructions are specific to installing Android on OS X.
 
-#### Bash Profile
+### Bash Profile
 
 - Add the Android SDK tools folder to your path so you can run `android`.
 - Define the `ANDROID_HOME` env var pointing to SDK root. On OS X place it in
@@ -63,6 +63,6 @@ it's time to launch the appium console. Make sure the ENV vars are exported.
 
 - See [running on OS X](https://github.com/appium/appium/blob/master/docs/running-on-osx.md)
 
-#### HAXM on OS X 10.9
+### HAXM on OS X 10.9
 
 Install the [HAXM 10.9 hotfix](http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager-end-user-license-agreement-macos-hotfix).

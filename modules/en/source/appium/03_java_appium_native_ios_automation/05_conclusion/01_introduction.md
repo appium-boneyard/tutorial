@@ -1,1 +1,0 @@
-[1.5.1 intro](/appium/01_ruby_appium_native_ios_automation/05_conclusion/01_introduction.md)

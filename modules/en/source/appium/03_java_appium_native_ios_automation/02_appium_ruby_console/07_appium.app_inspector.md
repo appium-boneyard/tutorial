@@ -1,1 +1,0 @@
-[1.2.7 appium.app inspector](/appium/01_ruby_appium_native_ios_automation/02_appium_ruby_console/07_appium.app_inspector.md)

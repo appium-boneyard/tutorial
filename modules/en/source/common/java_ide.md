@@ -1,4 +1,4 @@
-#### Java IDE
+## Java IDE
 
 Java has a number of popular editors. For this module,
 we'll be using `IntelliJ IDEA Community Edition`, an open source IDE by

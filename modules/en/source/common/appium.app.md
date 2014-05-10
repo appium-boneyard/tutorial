@@ -1,4 +1,4 @@
-#### Appium.app Inspector
+## Appium.app Inspector
 
 We've covered finding elements using the page command on the terminal.
 Appium also has a GUI tool on OS X called Appium.app.

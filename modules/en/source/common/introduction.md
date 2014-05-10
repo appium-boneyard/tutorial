@@ -1,4 +1,4 @@
-#### Introduction
+## Introduction
 
 Appium enables iOS and Android automation using Selenium WebDriver.
 The same WebDriver bindings can be used across web and mobile.

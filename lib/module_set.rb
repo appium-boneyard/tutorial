@@ -2,7 +2,7 @@ require_relative 'support/requires'
 
 =begin
 Sample module set en/1.0.0 that contains one module
-named `01_ruby_appium_native_ios_automation`
+named `01_native_ios_automation`
 
 .
 └── modules
@@ -10,7 +10,7 @@ named `01_ruby_appium_native_ios_automation`
         └── 1.0.0
             ├── gen
             │   └── appium
-            │       └── 01_ruby_appium_native_ios_automation
+            │       └── 01_native_ios_automation
             │           ├── 01_getting_started_with_appium
             │           ├── 02_appium_ruby_console
             │           ├── 03_writing_your_first_test
@@ -18,7 +18,7 @@ named `01_ruby_appium_native_ios_automation`
             │           └── 05_conclusion
             └── source
                 ├── appium
-                │   └── 01_ruby_appium_native_ios_automation
+                │   └── 01_native_ios_automation
                 │       ├── 01_getting_started_with_appium
                 │       ├── 02_appium_ruby_console
                 │       ├── 03_writing_your_first_test

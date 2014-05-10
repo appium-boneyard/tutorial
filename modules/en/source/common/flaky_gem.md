@@ -1,4 +1,4 @@
-#### Flaky Gem
+## Flaky Gem
 
 The flaky gem is a complete test runner specialized for appium Ruby tests.
 

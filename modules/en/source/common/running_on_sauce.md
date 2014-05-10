@@ -1,4 +1,4 @@
-#### Running on Sauce
+## Running on Sauce
 
 All the tools and techniques we've covered so far produce tests that run well
 on Sauce Labs.

@@ -1,5 +1,4 @@
-#### Install
-
+## Install
 
 This document is written for OS X 10.9.2 or better.
 

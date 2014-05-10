@@ -1,4 +1,4 @@
-#### Running using Jenkins CI
+## Running using Jenkins CI
 
 Jenkins is a popular open source CI server. Appium works with any CI.
 
