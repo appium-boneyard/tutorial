@@ -125,7 +125,7 @@ module Appium
         data = "\n"
         chapters_in_module(module_root).each do |chapter|
           lessons_in_chapter(chapter).each do |lesson|
-            data += "\n" + File.read(lesson) + "\n\n---\n"
+            data += "\n" + File.read(lesson) + "\n\n"
           end
         end
         data = data + "\n"
@@ -134,6 +134,23 @@ module Appium
         html_path = join(base_dest, basename_no_ext(module_root) + '.html')
         mkdir_p dirname html_path
         File.open(html_path, 'w') { |f| f.write html }
+
+        # all in one markdown file used for Slate
+        markdown_path = join(base_dest, basename_no_ext(module_root) + '.md')
+        prefix = <<PREFIX
+---
+title: Tutorial
+search: false
+
+language_tabs:
+  - ruby: Ruby
+  - java: Java
+---
+
+PREFIX
+        # remove empty space from code blocks
+        data.gsub!("<code>\n", "<code>")
+        File.open(markdown_path, 'w') { |f| f.write prefix + data.strip }
       end
 
       # copy images

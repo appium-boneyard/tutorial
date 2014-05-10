@@ -1,4 +1,4 @@
-## Install
+## Install Overview
 
 This document is written for OS X 10.9.2 or better.
 
@@ -26,62 +26,62 @@ Install the command line build tools within Xcode. (Xcode -> Preferences -> Down
 Alternatively, download them directly from [Apple](https://developer.apple.com/downloads/index.action).
 
 - Install [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+
+## Install Ruby
+
 - Install the latest stable release of Ruby.
 
-```
-$ \curl -sSL https://get.rvm.io | bash -s stable
-$ rvm install ruby
-```
+<code>
+\curl -sSL https://get.rvm.io | bash -s stable
+rvm install ruby
+</code>
 
 - Make sure RVM is using the correct Ruby by default
 
-```
-$ rvm list
-$ rvm --default use 2.1.1
-```
+<code>
+rvm list
+rvm --default use 2.1.1
+</code>
 
 - If you have an old ruby/rvm, you can upgrade with
 
-```
-$ rvm get head
-$ rvm autolibs homebrew
-$ rvm install ruby
-```
+<code>
+rvm get head
+rvm autolibs homebrew
+rvm install ruby
+</code>
 
 - Check that it's installed properly by printing the ruby version.
 
-`$ ruby --version`
+`ruby --version`
 
 - Update RubyGems and Bundler.
 
-```
-gem update --system ;\
-gem install --no-rdoc --no-ri bundler ;\
-gem update ;\
+<code>
+gem update --system
+gem install --no-rdoc --no-ri bundler
+gem update
 gem cleanup
-```
+</code>
 
 - Check that RubyGems is >= 2.1.5
 
-```bash
-$ gem --version
-2.2.2
-```
+`gem --version`
 
 - Install `appium_console` gem.
 
-```
-gem uninstall -aIx appium_lib ;\
-gem uninstall -aIx appium_console ;\
+<code>
+gem uninstall -aIx appium_lib
+gem uninstall -aIx appium_console
 gem install --no-rdoc --no-ri appium_console
-```
+</code>
 
 - Install [flaky](https://github.com/appium/flaky) gem.
 
-```
-gem uninstall -aIx flaky ;\
+<code>
+gem uninstall -aIx flaky
 gem install --no-rdoc --no-ri flaky
-```
+</code>
 
 - Install [brew](http://mxcl.github.io/homebrew/)
 
@@ -89,19 +89,20 @@ gem install --no-rdoc --no-ri flaky
 
 - Install [nodejs](http://nodejs.org/) using brew.
 
-```
-brew update ;\
-brew upgrade node ;\
+<code>
+brew update
+brew upgrade node
 brew install node
-```
+</code>
 
 - Node should be `v0.10.26` or better.
 Don't use the big green install button on [nodejs.org](http://nodejs.org/) or
 all npm commands will require sudo.
 
-`$ node --version`
-
-`$ npm --version`
+<code>
+node --version
+npm --version
+</code>
 
 - Install grunt.
 
@@ -110,32 +111,30 @@ all npm commands will require sudo.
 - Run the version command from the appium folder. If you're not in that
 folder, the grunt version will not display.
 
-```
-$ grunt --version
+<code>
+grunt --version
 grunt-cli v0.1.13
 grunt v0.4.2
-```
+</code>
 
 - Install [ant](http://ant.apache.org/) if it's not already installed.
 - Install [maven 3.1.1 or better](http://maven.apache.org/download.cgi) if
 it's not already installed. Old maven will not work.
 
-```
-$ ant -version
-Apache Ant(TM) version 1.8.2 compiled on June 20 2012
-$ mvn -version
-Apache Maven 3.1.1 (0728685237757ffbf44136acec0402957f723d9a; 2013-09-17 11:22:22-0400)
-```
+<code>
+ant -version
+mvn -version
+</code>
 
 - Clone appium
 
-`$ git clone git://github.com/appium/appium.git`
+`git clone git://github.com/appium/appium.git`
 
 - Run reset.sh. When running reset.sh, make sure to be on Xcode 5.0.2 for
 best results. You may have problems if you reset on Xcode 4.6.3 and then
 switch to a newer Xcode.
 
-`$ cd appium; ./reset.sh`
+`cd appium; ./reset.sh`
 
 If you see config errors, try cleaning git. `git clean -dfx; git reset --hard`
 
@@ -144,25 +143,26 @@ You can also reset by platform. `./reset.sh --ios`
 - Authorize for testing. Must run reset.sh as mentioned above before
 running the grunt task. If you're only testing Android, this can be skipped.
 
-> sudo \`which grunt\` authorize
+`sudo \`which grunt\` authorize`
 
 - Start appium.
 
 `$ node .`
 
-#### Bash Profile
+## Bash Profile
+
 - You may have to add grunt as well `/usr/local/share/npm/bin/grunt`
 
-```
+<code>
 $ nano ~/.bash_profile
 PATH=$PATH:/Applications/apache-ant-1.8.4/bin
 PATH=$PATH:/usr/local/share/npm/bin/
-export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
+export JAVA_HOME="\`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home\`"
 
 export PATH
-```
+</code>
 
-#### Troubleshooting
+## Troubleshooting
 
 - If install fails, keep trying to install a few times.
 
@@ -171,40 +171,40 @@ When using `Appium.app` make sure to set Appium -> Preferences... -> Check
 
 Fix permission errors. npm shouldn't require sudo.
 
-```
-$ brew uninstall node
-$ brew install node
-$ rm -rf ./node_modules
-$ rm -rf "/Users/`whoami`/.npm"
-$ rm -rf /usr/local/lib/node_modules/
-$ ./reset.sh --ios
-$ ./reset.sh --android
-```
+<code>
+brew uninstall node
+brew install node
+rm -rf ./node_modules
+rm -rf "/Users/`whoami`/.npm"
+rm -rf /usr/local/lib/node_modules/
+./reset.sh --ios
+./reset.sh --android
+</code>
 
 - [Helper bash methods](https://gist.github.com/bootstraponline/5580587)
 
-#### SSL Issues
+## SSL Issues
 
 > Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 
 - [Fix SSL issues](http://railsapps.github.io/openssl-certificate-verify-failed.html) with:
 
-```
-$ rvm osx-ssl-certs update all
-$ rvm osx-ssl-certs status all
-```
+<code>
+rvm osx-ssl-certs update all
+rvm osx-ssl-certs status all
+</code>
 
-#### Maven on OS X 10.9
+## Maven on OS X 10.9
 
-```
-$ brew update
-$ brew install maven
-```
+<code>
+brew update
+brew install maven
+</code>
 
-#### Corrupt ruby gems
+## Corrupt ruby gems
 
 If you see:
 
-> invalid gem: package is corrupt, exception while verifying: undefined method
+`invalid gem: package is corrupt, exception while verifying: undefined method`
 
-Then run `$ rm -rf ~/.rvm` and reinstall RVM.
+Then run `rm -rf ~/.rvm` and reinstall RVM.
