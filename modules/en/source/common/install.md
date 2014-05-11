@@ -157,7 +157,7 @@ running the grunt task. If you're only testing Android, this can be skipped.
 $ nano ~/.bash_profile
 PATH=$PATH:/Applications/apache-ant-1.8.4/bin
 PATH=$PATH:/usr/local/share/npm/bin/
-export JAVA_HOME="\`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home\`"
+export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
 
 export PATH
 </code>

@@ -94,7 +94,7 @@ module Appium
 
 
 =begin
-test input:
+# test input
 
 `//&&&`
 
@@ -117,13 +117,34 @@ export JAVA_HOME="\`/System/Library/Frameworks/JavaVM.framework/Versions/Current
 export PATH
 </code>
 
+```
+>>>&&&&
+```
+
+```ruby
+>>>&&&&
+```
 =end
     # <code>`testing`</code> must be escaped to render correctly.
     def escape_code_blocks markdown
       # must wrap in <p> or empty line in <code> will confuse markdown rendering
-      EscapeUtils.escape_html(markdown).
-                                      gsub('&lt;code&gt;', '<p><code>').
-                                      gsub('&lt;&#47;code&gt;', '</code></p>')
+      markdown = EscapeUtils.escape_html(markdown).
+        gsub('&lt;code&gt;', '<p><code>').
+        gsub('&lt;&#47;code&gt;', '</code></p>')
+
+      # must remove escaping from triple backtick blocks
+      # ```lang content must not be escaped
+
+      # gsub from gollum
+      # https://github.com/gollum/gollum-lib/blob/b8be94d84b99ab656307ac792974af4712a328a3/lib/gollum-lib/filter/code.rb#L38
+      markdown.gsub!(/^([ \t]*)``` ?([^\r\n]+)?\r?\n(.+?)\r?\n\1```[ \t]*\r?$/m) do
+        indent = $1
+        lang   = $2 ? $2.strip : nil
+        code   = $3
+        "#{indent}```#{lang}\n#{EscapeUtils.unescape_html(code)}\n```"
+      end
+
+      markdown
     end
 
     # process all include tags contained within the markdown
