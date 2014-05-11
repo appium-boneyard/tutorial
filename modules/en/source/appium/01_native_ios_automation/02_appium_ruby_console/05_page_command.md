@@ -117,7 +117,7 @@ In this case we see that the name, label, and value are all equal to UICatalog.
 
 <code>
 > find('UICatalog').name
-#<Selenium::WebDriver::Element:0x..f8575cfe515fb47ea id="0">
+"UICatalog"
 </code>
 
 The find command in the appium ruby gem will search for a partial case
