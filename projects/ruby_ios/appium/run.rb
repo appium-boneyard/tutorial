@@ -3,7 +3,8 @@ require 'rubygems'
 require 'test_runner'
 require 'spec'
 
-load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
+caps = Appium.load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
+caps = caps.merge({ appium_lib: { debug: true, wait: 30, export_session: true } })
 
 dir = File.expand_path '..', __FILE__
 device = ARGV[0].downcase.strip
@@ -17,7 +18,7 @@ puts 'Start driver'
 ENV['APP_PATH'] = ENV['SAUCE_PATH'] if ENV['SAUCE_USERNAME'] && ENV['SAUCE_ACCESS_KEY']
 
 # set export session so we're able to generate valid links to the Sauce jobs.
-Appium::Driver.new(debug: true, wait: 30, export_session: true).start_driver
+Appium::Driver.new(caps).start_driver
 require_relative 'ios/common.rb'
 
 trace_files = []
