@@ -76,7 +76,7 @@ ruby console.
 
 The next set of information is the network traffic.
 
-```
+<code>
 {
     :script => "UIATarget.localTarget().frontMostApp().windows()[0].getTree()"
 }
@@ -88,7 +88,7 @@ post /execute
 {
     :script => "mobile: getStrings"
 }
-```
+</code>
 
 In response to the page command, three network requests were sent. The
 [selenium-webdriver gem](http://rubygems.org/gems/selenium-webdriver) is used
@@ -96,27 +96,27 @@ to generate these requests.
 
 After that is the result of the page command.
 
-```
+<code>
 UIAStaticText
    name, label, value: UICatalog
-```
+</code>
 
 `UIAStaticText` is the [iOS specific name](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIAStaticTextClassReference/UIAStaticText/UIAStaticText.html)
 for the element.
 
 Under each element name is a list of properties.
 
-```
+<code>
 UIAStaticText
    name, label, value: UICatalog
-```
+</code>
 
 In this case we see that the name, label, and value are all equal to UICatalog.
 
-```
+<code>
 > name('UICatalog')
 #<Selenium::WebDriver::Element:0x..f8575cfe515fb47ea id="0">
-```
+</code>
 
 The name command in the appium ruby gem will search for a partial match on
 either the name or the label. Once we've found the element,
@@ -124,25 +124,25 @@ then we can access the value attribute.
 
 To find by value, we'd use:
 
-```
+<code>
 > s_text 'UICatalog'
 #<Selenium::WebDriver::Element:0x5e4e2159acc099a id="3">
-```
+</code>
 
 This finds a static text that contains UICatalog. If we're looking for an
 exact match, then s_text_exact works.
 
-```
+<code>
 > s_text_exact 'UICatalog'
 #<Selenium::WebDriver::Element:0x5e4e2159acc099a id="3">
-```
+</code>
 
 These helper methods [are documented on GitHub](https://github.com/appium/ruby_lib/tree/master/docs).
 
 To view all possible elements, there's a `source` command. The `page_class`
 command will give you an overview of what classes exist on the current page.
 
-```
+<code>
 > page_class
 13x UIAStaticText
 12x UIATableCell
@@ -152,7 +152,7 @@ command will give you an overview of what classes exist on the current page.
 1x UIATableView
 1x UIANavigationBar
 1x UIAStatusBar
-```
+</code>
 
 The page command excels at identifying the elements you're most likely
 interested in automating. I encourage you to read through the existing docs

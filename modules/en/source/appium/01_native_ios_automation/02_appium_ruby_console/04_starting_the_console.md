@@ -5,12 +5,12 @@ To start the Appium Ruby Console for use with iOS, the app path is required.
 In this case we're developing locally, so let's create an appium.txt with
 that path.
 
-```
+<code>
 $ nano appium.txt
 [caps]
 platformName = "ios"
 app = "./UICatalog.app"
-```
+</code>
 
 The appium.txt contains two important pieces of information.
 

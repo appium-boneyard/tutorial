@@ -185,7 +185,7 @@ rm -rf /usr/local/lib/node_modules/
 
 ## SSL Issues
 
-> Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+`Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed`
 
 - [Fix SSL issues](http://railsapps.github.io/openssl-certificate-verify-failed.html) with:
 

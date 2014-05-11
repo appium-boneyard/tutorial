@@ -8,7 +8,7 @@ The UICatalog app is [provided by Apple](https://developer.apple.com/library/ios
 After seeing `---- reset.sh completed successfully ----`, you'll find `UICatalog.app`
 at this location:
 
-> /appium/sample-code/apps/UICatalog/build/Release-iphonesimulator/UICatalog.app
+`/appium/sample-code/apps/UICatalog/build/Release-iphonesimulator/UICatalog.app`
 
 It's important to note that this app is built for the simulator.
 Builds for physical iOS devices only work on physical iOS devices.
