@@ -92,24 +92,38 @@ module Appium
       end
     end
 
+
+=begin
+test input:
+
+`//&&&`
+
+<code>
+//&&&
+</code>
+
+<code>> s_text 'UICatalog'
+#<Selenium::WebDriver::Element:0x5e4e2159acc099a id="3">
+</code>
+
+<code>
+$ nano ~/.bash_profile
+PATH=$PATH:/Applications/apache-ant-1.8.4/bin
+PATH=$PATH:/usr/local/share/npm/bin/
+export JAVA_HOME="\`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home\`"
+
+# hi `there`
+
+export PATH
+</code>
+
+=end
     # <code>`testing`</code> must be escaped to render correctly.
     def escape_code_blocks markdown
-      # escape all by default then restore code tags for nokogiri parsing
-      doc = Nokogiri::HTML.fragment(EscapeUtils.escape_html(markdown).
-                                      gsub('&lt;code&gt;', '<code>').
-                                      gsub('&lt;&#47;code&gt;', '</code>'))
-
-      doc.search('code').each do |node|
-        html  = node.inner_html
-        # &amp; must be used or nokogiri will replace it with the literal character
-        # which then confuses markdown rendering. after rendering, the &amp; is replaced.
-        # EscapeUtils will not escape back tick
-        # `#` must be escaped or it'll be transformed into a heading
-        escaped = EscapeUtils.escape_html(html).gsub('`', '&amp;#96;').gsub('#', '\#')
-        node.inner_html = escaped
-      end
-
-      doc.to_html(encoding: 'UTF-8')
+      # must wrap in <p> or empty line in <code> will confuse markdown rendering
+      EscapeUtils.escape_html(markdown).
+                                      gsub('&lt;code&gt;', '<p><code>').
+                                      gsub('&lt;&#47;code&gt;', '</code></p>')
     end
 
     # process all include tags contained within the markdown

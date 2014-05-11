@@ -143,7 +143,7 @@ You can also reset by platform. `./reset.sh --ios`
 - Authorize for testing. Must run reset.sh as mentioned above before
 running the grunt task. If you're only testing Android, this can be skipped.
 
-<code>sudo &#96;which grunt&#96; authorize</code>
+<code>sudo `which grunt`; authorize</code>
 
 - Start appium.
 
