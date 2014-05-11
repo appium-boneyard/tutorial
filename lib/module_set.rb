@@ -130,10 +130,10 @@ module Appium
         end
         data = data + "\n"
 
-        html      = wrap_html markup.render_default "[[_TOC_]]\n" + data
+        # html      = wrap_html markup.render_default "[[_TOC_]]\n" + data
         html_path = join(base_dest, basename_no_ext(module_root) + '.html')
         mkdir_p dirname html_path
-        File.open(html_path, 'w') { |f| f.write html }
+        # File.open(html_path, 'w') { |f| f.write html }
 
         # all in one markdown file used for Slate
         markdown_path = join(base_dest, basename_no_ext(module_root) + '.md')
