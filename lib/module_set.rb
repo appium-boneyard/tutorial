@@ -94,7 +94,10 @@ module Appium
 
     # <code>`testing`</code> must be escaped to render correctly.
     def escape_code_blocks markdown
-      doc = Nokogiri::HTML.fragment(markdown)
+      # escape all by default then restore code tags for nokogiri parsing
+      doc = Nokogiri::HTML.fragment(EscapeUtils.escape_html(markdown).
+                                      gsub('&lt;code&gt;', '<code>').
+                                      gsub('&lt;&#47;code&gt;', '</code>'))
 
       doc.search('code').each do |node|
         html  = node.inner_html
