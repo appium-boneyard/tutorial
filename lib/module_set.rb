@@ -126,6 +126,8 @@ export PATH
 ```
 
 > block quote
+
+<aside class="success">testing!</aside>
 =end
     # <code>`testing`</code> must be escaped to render correctly.
     def escape_code_blocks markdown

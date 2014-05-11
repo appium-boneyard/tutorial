@@ -22,9 +22,9 @@ generally intended to mimic the code we've looked at in the Ruby console.
 
 Clone the git repository and open the projects/java_ios directory.
 
-> The project is setup using maven.
+The project is setup using maven.
 
-> - To use with NetBeans, go to `File` then `Open Project` and select the folder.
+- To use with NetBeans, go to `File` then `Open Project` and select the folder.
 - To use with Eclipse, go to `File` then `Import` and select `Existing Maven Projects`
 - To use with IntelliJ, go to `File` then `Open` and select the `pom.xml`
 - To use with the command line, `mvn clean test` will run all the tests.
@@ -40,7 +40,10 @@ git clone https://github.com/appium/tutorial.git</aside>
 
 We're going to verify each element brings us to the correct page.
 
+### Click & verify
+
 ```ruby
+# ruby
 s_text('Buttons, Various uses of UIButton').click
 s_text_exact 'Buttons'
 ```
@@ -61,7 +64,10 @@ element not found exception is raised.
 
 To overcome these timing problems, the wait helper method is useful.
 
+### Using a wait
+
 ```ruby
+# ruby
 wait { s_text('Buttons, Various uses of UIButton').click }
 wait { s_text_exact 'Buttons' }
 ```
@@ -80,7 +86,10 @@ is not rescued then the test will end in failure.
 Another problem with the test code is that we're depending on the exact text
 value. When the app changes, our tests will break.
 
+### Dynamic values
+
 ```ruby
+# ruby
 cell_1 = wait { s_text 2 }
 page_title = cell_1.name.split(',').first
 
@@ -102,9 +111,12 @@ first cell. Index 1 is the table header. After that we're extracting the name
 and dynamically finding the title `Buttons`. The test will continue working
 even after small changes to the string values.
 
+### 12 cells
+
 To conclude this lesson, we'll look at the code to automate all 12 cells.
 
 ```ruby
+# ruby
 cell_names = tags('cell').map { |cell| cell.name }
 
 cell_names.each do |name|
