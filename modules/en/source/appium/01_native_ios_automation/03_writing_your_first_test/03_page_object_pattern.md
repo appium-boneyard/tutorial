@@ -10,7 +10,7 @@ page knows how to perform the relevant actions.
 Clone the git repository and copy the [ruby_ios](https://github.com/appium/tutorial/tree/master/modules/source/ruby_ios)
 directory to your computer.
 
-> git clone https://github.com/appium/tutorial.git
+`git clone https://github.com/appium/tutorial.git`
 
 The pages are contained within the page folder, and the test inside specs.
 The test code is:

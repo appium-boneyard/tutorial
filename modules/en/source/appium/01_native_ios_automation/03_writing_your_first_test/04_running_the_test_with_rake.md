@@ -9,7 +9,7 @@ the entire test.
 
 When running a full test, it's often preferable to use the `rake` command.
 
-> rake ios[test]
+`rake ios[test]`
 
 The Rakefile for this project is setup to define an ios task. That task
 accepts the test name as an argument.

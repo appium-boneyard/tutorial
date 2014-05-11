@@ -124,13 +124,18 @@ export PATH
 ```ruby
 >>>&&&&
 ```
+
+> block quote
 =end
     # <code>`testing`</code> must be escaped to render correctly.
     def escape_code_blocks markdown
       # must wrap in <p> or empty line in <code> will confuse markdown rendering
       markdown = EscapeUtils.escape_html(markdown).
         gsub('&lt;code&gt;', '<p><code>').
-        gsub('&lt;&#47;code&gt;', '</code></p>')
+        gsub('&lt;&#47;code&gt;', '</code></p>').
+        gsub('&lt;aside class=&quot;success&quot;&gt;', '<aside class="success">'). # restore aside
+        gsub('&lt;&#47;aside&gt;', '</aside>').
+        gsub('&gt;', '>') # block quote
 
       # must remove escaping from triple backtick blocks
       # ```lang content must not be escaped

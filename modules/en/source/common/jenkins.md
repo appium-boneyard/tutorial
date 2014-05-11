@@ -4,11 +4,11 @@ Jenkins is a popular open source CI server. Appium works with any CI.
 
 A simple way to get started is by downloading the Jenkins war.
 
-> http://jenkins-ci.org/
+`http://jenkins-ci.org/`
 
 then run
 
-> java -jar jenkins.war
+`java -jar jenkins.war`
 
 now open a web browser and visit [http://localhost:8080/](http://localhost:8080/)
 

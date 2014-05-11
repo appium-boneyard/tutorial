@@ -1,25 +1,26 @@
 ## Automating a simple action
 
 ```ruby
-> The commands in the test are exactly the same as those used in the console.
+=begin
+Ruby notes:
+
+The commands in the test are exactly the same as those used in the console.
 Code can be copied and pasted to and from the console to form production tests.
 
-> Clone the git repository and copy the [ruby_ios](https://github.com/appium/tutorial/tree/master/projects/ruby_ios)
-directory to your computer.
-
-> git clone https://github.com/appium/tutorial.git
+Clone the git repository and open the projects/ruby_ios directory.
+=end
 ```
 
 ```java
-> The commands from the Ruby console are different from those in the Java
+/*
+Java notes:
+
+The commands from the Ruby console are different from those in the Java
 bindings. To make this easier, the java_ios folder contains a Helpers class.
 Convenience methods such as s_text, back, and wait have been added. They're
 generally intended to mimic the code we've looked at in the Ruby console.
 
-> Clone the git repository and copy the [java_ios](https://github.com/appium/tutorial/tree/master/projects/java_ios)
-directory to your computer.
-
-> git clone https://github.com/appium/tutorial.git
+Clone the git repository and open the projects/java_ios directory.
 
 > The project is setup using maven.
 
@@ -27,11 +28,15 @@ directory to your computer.
 - To use with Eclipse, go to `File` then `Import` and select `Existing Maven Projects`
 - To use with IntelliJ, go to `File` then `Open` and select the `pom.xml`
 - To use with the command line, `mvn clean test` will run all the tests.
+*/
 ```
 
 The basic structure of the UICatalog test app is that clicking on the text
 brings you to a dedicated page about that text. Buttons triggers the Buttons
 page, Controls triggers Controls, and so on.
+
+<aside class="success">Remember to clone the repo:
+git clone https://github.com/appium/tutorial.git</aside>
 
 We're going to verify each element brings us to the correct page.
 
@@ -129,8 +134,10 @@ default, we're able to access off screen elements and they're scrolled
 into view.
 
 ```java
-> The Java code for the examples is in `/java_ios/src/test/java/appium/tutorial/ios/AutomatingASimpleActionTest.java`
+/*
+The Java code for the examples is in `/java_ios/src/test/java/appium/tutorial/ios/AutomatingASimpleActionTest.java`
 The tests from that file may be run from the command line with:
 
->  mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test
+mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test
+*/
 ```
