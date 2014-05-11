@@ -136,6 +136,7 @@ export PATH
         gsub('&lt;code&gt;', '<p><code>').
         gsub('&lt;&#47;code&gt;', '</code></p>').
         gsub('&lt;aside class=&quot;success&quot;&gt;', '<aside class="success">'). # restore aside
+        gsub('&lt;aside class=&quot;notice&quot;&gt;', '<aside class="notice">').
         gsub('&lt;&#47;aside&gt;', '</aside>').
         gsub('&gt;', '>') # block quote
 

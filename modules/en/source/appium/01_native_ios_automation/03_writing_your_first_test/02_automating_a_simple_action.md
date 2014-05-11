@@ -1,5 +1,9 @@
 ## Automating a simple action
 
+<aside class="notice">
+Click on `Java` and `Ruby` to toggle the language examples
+</aside>
+
 ```ruby
 =begin
 Ruby notes:
@@ -117,7 +121,7 @@ To conclude this lesson, we'll look at the code to automate all 12 cells.
 
 ```ruby
 # ruby
-cell_names = tags('cell').map { |cell| cell.name }
+cell_names = tags('UIATableCell').map { |cell| cell.name }
 
 cell_names.each do |name|
   wait { s_text_exact(name).click }
@@ -130,7 +134,7 @@ end
 // java
 List<String> cell_names = new ArrayList<String>();
 
-for (WebElement cell : tags("cell")) {
+for (WebElement cell : tags("UIATableCell")) {
   cell_names.add(cell.getAttribute("name"));
 }
 

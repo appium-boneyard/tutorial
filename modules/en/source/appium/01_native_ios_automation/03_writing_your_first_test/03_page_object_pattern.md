@@ -16,10 +16,10 @@ The pages are contained within the page folder, and the test inside specs.
 The test code is:
 
 ```ruby
-home.buttons_click
+home.button_uses_click
 back_click
 
-home.controls_click
+home.control_uses_click
 back_click
 ```
 
