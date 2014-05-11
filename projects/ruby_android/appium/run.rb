@@ -3,8 +3,8 @@ require 'rubygems'
 require 'test_runner'
 require 'spec'
 
-load_appium_txt file: ENV['APPIUM_TXT'], verbose: true
-
+caps = Appium.load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
+caps = caps.merge({ appium_lib: { debug: true, wait: 30, export_session: true } })
 
 device = ARGV[0].downcase.strip
 raise 'Expected android as first argument' unless device == 'android'
@@ -17,10 +17,6 @@ use_selendroid = device == 'selendroid'
 puts "Use selendroid? #{use_selendroid}"
 
 ENV['APP_PATH'] = ENV['SAUCE_PATH'] if ENV['SAUCE_USERNAME'] && ENV['SAUCE_ACCESS_KEY']
-
-# Sauce requires device cap
-raw_caps = { device: 'Android' }
-caps = { fast_clear: true, debug: true, wait: 1, export_session: true, raw: raw_caps }
 
 # set export session so we're able to generate valid links to the Sauce jobs.
 Appium::Driver.new(caps).start_driver
