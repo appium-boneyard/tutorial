@@ -46,5 +46,5 @@ task :api => :build do
   dst = File.expand_path File.join(folder, 'index.md')
   File.delete dst if File.exist? dst
 
-  File.copy_entry src, dst
+  FileUtils.copy_entry src, dst
 end

@@ -92,6 +92,23 @@ module Appium
       end
     end
 
+    # <code>`testing`</code> must be escaped to render correctly.
+    def escape_code_blocks markdown
+      doc = Nokogiri::HTML.fragment(markdown)
+
+      doc.search('code').each do |node|
+        html  = node.inner_html
+        # &amp; must be used or nokogiri will replace it with the literal character
+        # which then confuses markdown rendering. after rendering, the &amp; is replaced.
+        # EscapeUtils will not escape back tick
+        # `#` must be escaped or it'll be transformed into a heading
+        escaped = EscapeUtils.escape_html(html).gsub('`', '&amp;#96;').gsub('#', '\#')
+        node.inner_html = escaped
+      end
+
+      doc.to_html(encoding: 'UTF-8')
+    end
+
     # process all include tags contained within the markdown
     def generate_markdown
       src_path = join modules_source_path, 'appium', '**', '*.md'
@@ -128,7 +145,7 @@ module Appium
             data += "\n" + File.read(lesson) + "\n\n"
           end
         end
-        data = data + "\n"
+        data      = data + "\n"
 
         # html      = wrap_html markup.render_default "[[_TOC_]]\n" + data
         html_path = join(base_dest, basename_no_ext(module_root) + '.html')
@@ -137,7 +154,7 @@ module Appium
 
         # all in one markdown file used for Slate
         markdown_path = join(base_dest, basename_no_ext(module_root) + '.md')
-        prefix = <<PREFIX
+        prefix        = <<PREFIX
 ---
 title: Tutorial
 search: false
@@ -148,8 +165,10 @@ language_tabs:
 ---
 
 PREFIX
-        # remove empty space from code blocks
+        # remove empty space from code blocks.
+        # if left in, an empty space appears above each code block
         data.gsub!("<code>\n", "<code>")
+        data = escape_code_blocks data
         File.open(markdown_path, 'w') { |f| f.write prefix + data.strip }
       end
 

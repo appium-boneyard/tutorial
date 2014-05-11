@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+gem 'nokogiri', '~> 1.6.1'
+gem 'escape_utils', '~> 1.0.1'
+
 # 3.0.0 is a known good version.
 # Don't upgrade gollum-lib unless the changes
 # have been verified not to break anything.
