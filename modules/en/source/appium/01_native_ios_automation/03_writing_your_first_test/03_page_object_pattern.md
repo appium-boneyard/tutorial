@@ -1,5 +1,7 @@
 ## Page Object Pattern
 
+<!-- <ruby> -->
+
 Now that we have a test fully written, it's time to apply the
 [page object pattern](https://code.google.com/p/selenium/wiki/PageObjects).
 
@@ -69,3 +71,5 @@ the text can change and the ids will remain constant.
 `appium.txt` enables these page methods to be used from within the appium
 ruby console. In the next lesson, we'll review running the entire test using
 Rake.
+
+<!-- </ruby> -->
