@@ -6,7 +6,7 @@ module APIDemos
       #
 
       def assert_exists
-        s_text_exact 'Accessibility Node Querying'
+        text_exact 'Accessibility Node Querying'
       end
 
       def assert

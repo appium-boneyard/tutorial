@@ -7,13 +7,13 @@ module APIDemos
 
       def accessibility_click
         self.assert
-        wait { s_text(2).click }
+        wait { text(2).click }
         accessibility.assert
       end
 
       def animation_click
         self.assert
-        wait { s_text(3).click }
+        wait { text(3).click }
         animation.assert
       end
 
@@ -24,8 +24,8 @@ module APIDemos
       def assert_exists
         # we're on the homepage if both
         # of these strings are visible
-        s_text_exact 'Accessibility'
-        s_text_exact 'Animation'
+        text_exact 'Accessibility'
+        text_exact 'Animation'
       end
 
       def assert

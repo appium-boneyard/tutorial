@@ -6,7 +6,7 @@ module APIDemos
       #
 
       def assert_exists
-        s_text_exact 'Bouncing Balls'
+        text_exact 'Bouncing Balls'
       end
 
       def assert

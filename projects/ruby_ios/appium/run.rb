@@ -4,7 +4,8 @@ require 'test_runner'
 require 'spec'
 require 'sauce_whisk'
 
-caps = Appium.load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
+appium = File.expand_path(File.join(Dir.pwd, 'appium'))
+caps = Appium.load_appium_txt file: appium, verbose: true
 
 def using_sauce
   user = ENV['SAUCE_USERNAME']
@@ -13,25 +14,21 @@ def using_sauce
 end
 
 if using_sauce
-  app = File.expand_path(File.join(__dir__, '..', 'UICatalog6.1.app.zip'))
   storage = SauceWhisk::Storage.new debug: true
+  app = caps[:caps][:app]
   storage.upload app
 
   caps[:caps][:app] = "sauce-storage:#{File.basename(app)}"
 end
 
-dir    = File.expand_path '..', __FILE__
+dir    = appium
 device = ARGV[0].downcase.strip
-raise 'Expected ios' unless device == 'ios'
 
 one_test = ARGV[1]
 test_dir = "/#{device}/"
 
-puts 'Start driver'
-
 # set export session so we're able to generate valid links to the Sauce jobs.
 Appium::Driver.new(caps).start_driver
-require_relative 'ios/common.rb'
 
 trace_files = []
 
