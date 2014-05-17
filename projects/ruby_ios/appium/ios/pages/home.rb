@@ -7,13 +7,13 @@ module UICatalog
 
       def button_uses_click
         self.assert
-        wait { s_text(2).click }
+        wait { text(2).click }
         button_uses.assert
       end
 
       def control_uses_click
         self.assert
-        wait { s_text(3).click }
+        wait { text(3).click }
         control_uses.assert
       end
 
@@ -22,7 +22,7 @@ module UICatalog
       #
 
       def assert_exists
-        s_text_exact 'UICatalog'
+        text_exact 'UICatalog'
       end
 
       def assert

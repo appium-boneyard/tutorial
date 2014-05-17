@@ -1,6 +1,13 @@
 [caps]
+appium-version = "1.0.0"
 platformName = "ios"
-app = "./UICatalog.app"
+platformVersion = "7.1"
+deviceName = "iPhone Simulator"
+app = "./UICatalog6.1.app.zip"
+name = "Ruby iOS Tutorial"
 
 [appium_lib]
+debug = true
+wait = 30
+export_session = true
 require = ["./appium/ios/pages", "./appium/ios/common.rb"]

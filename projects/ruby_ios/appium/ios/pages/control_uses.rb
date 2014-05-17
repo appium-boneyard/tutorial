@@ -6,7 +6,7 @@ module UICatalog
       #
 
       def assert_exists
-        s_text_exact resolve_id 'ControlsTitle'
+        text_exact resolve_id 'ControlsTitle'
       end
 
       def assert

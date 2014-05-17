@@ -4,5 +4,5 @@ require_relative 'requires'
 Appium.promote_singleton_appium_methods UICatalog
 
 def back_click(opts={})
-   wait { back }
+   wait { button_exact('Back').click }
 end

@@ -2,11 +2,25 @@
 require 'rubygems'
 require 'test_runner'
 require 'spec'
+require 'sauce_whisk'
 
 caps = Appium.load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
-caps = caps.merge({ appium_lib: { debug: true, wait: 30, export_session: true } })
 
-dir = File.expand_path '..', __FILE__
+def using_sauce
+  user = ENV['SAUCE_USERNAME']
+  key  = ENV['SAUCE_ACCESS_KEY']
+  user && !user.empty? && key && !key.empty?
+end
+
+if using_sauce
+  app = File.expand_path(File.join(__dir__, '..', 'UICatalog6.1.app.zip'))
+  storage = SauceWhisk::Storage.new debug: true
+  storage.upload app
+
+  caps[:caps][:app] = "sauce-storage:#{File.basename(app)}"
+end
+
+dir    = File.expand_path '..', __FILE__
 device = ARGV[0].downcase.strip
 raise 'Expected ios' unless device == 'ios'
 
@@ -14,8 +28,6 @@ one_test = ARGV[1]
 test_dir = "/#{device}/"
 
 puts 'Start driver'
-
-ENV['APP_PATH'] = ENV['SAUCE_PATH'] if ENV['SAUCE_USERNAME'] && ENV['SAUCE_ACCESS_KEY']
 
 # set export session so we're able to generate valid links to the Sauce jobs.
 Appium::Driver.new(caps).start_driver
@@ -57,4 +69,10 @@ end
 # Exit after tests.
 Minitest.after_run { $driver.x if $driver }
 # Run Minitest. Provide spec file array for tracing.
-Minitest.run_specs({ :trace => trace_files })
+passed = Minitest.run_specs({ :trace => trace_files }).first
+
+# Report pass/fail to Sauce
+if using_sauce
+ passed = passed.failures == 0 && passed.errors == 0
+ SauceWhisk::Jobs.change_status $driver.driver.session_id, passed
+end

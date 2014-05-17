@@ -1,6 +1,7 @@
-require File.expand_path '../sauce_storage', __FILE__
+require 'rubygems'
+require 'sauce_whisk'
 
-s = SauceStorage.new debug: true
+s = SauceWhisk::Storage.new debug: true
 apk = File.expand_path '../' * 2 + ENV['UPLOAD_FILE'], __FILE__
 
 s.upload apk

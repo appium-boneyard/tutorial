@@ -4,7 +4,6 @@ require 'test_runner'
 require 'spec'
 
 caps = Appium.load_appium_txt file: File.expand_path('..', __FILE__), verbose: true
-caps = caps.merge({ appium_lib: { debug: true, wait: 30, export_session: true } })
 
 device = ARGV[0].downcase.strip
 raise 'Expected android as first argument' unless device == 'android'
