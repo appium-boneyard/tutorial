@@ -1,21 +1,23 @@
-#### Starting the console
+## Starting the console
 
 Appium Ruby Console needs a platform and app path to get started.
 
 If you see the following warning, it's safe to ignore. `libdvm.so` is part of
 the android platform and not something we control.
 
-> WARNING: linker: libdvm.so has text relocations. This is wasting memory and
+<code>
+WARNING: linker: libdvm.so has text relocations. This is wasting memory and
 is a security risk. Please fix.
+</code>
 
 We're developing locally, so create an appium.txt with the following:
 
-```
+<code>
 $ nano appium.txt
 [caps]
 platformName = "android"
 app = "./api.apk"
-```
+</code>
 
 The appium.txt contains two important pieces of information.
 

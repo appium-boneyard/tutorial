@@ -1,5 +1,3 @@
-## Flaky Gem
-
 The flaky gem is a complete test runner specialized for appium Ruby tests.
 
 It runs only on OS X and supports iOS and Android testing. After writing a

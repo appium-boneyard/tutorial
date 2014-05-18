@@ -1,4 +1,4 @@
-#### Additional Resources
+## Additional Resources
 
 Appium relies on uiautomator for Android automation. Selendroid is also
 supported for Android and is particularly useful for older devices and

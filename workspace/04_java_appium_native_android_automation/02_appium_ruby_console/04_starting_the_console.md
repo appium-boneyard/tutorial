@@ -1,1 +1,0 @@
-[2.2.4 starting the console](/appium/02_ruby_appium_native_android_automation/02_appium_ruby_console/04_starting_the_console.md)

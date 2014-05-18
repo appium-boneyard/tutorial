@@ -7,7 +7,7 @@ RSpec::Core::RakeTask.new :spec
 # When the 'rake' command is used without a task
 task :default => :spec
 tutorial_root = File.expand_path File.join(Dir.pwd, 'modules')
-tutorial = Appium::Tutorial.new tutorial_root: tutorial_root
+tutorial      = Appium::Tutorial.new tutorial_root: tutorial_root
 
 desc 'clean, generate markdown, then generate html'
 task :html do
@@ -37,14 +37,23 @@ task :build do
   tutorial.publish
 end
 
-desc 'Build then overwrite index.md in ../api_docs'
-task :api => :build do
+def api tutorial_name
   folder = File.expand_path File.join(__dir__, '..', 'api_docs', 'source')
   return unless File.exist? folder
 
-  src = File.expand_path File.join(__dir__, 'tutorials', 'en', '01_native_ios_automation.md')
+  src = File.expand_path File.join(__dir__, 'tutorials', 'en', tutorial_name)
   dst = File.expand_path File.join(folder, 'index.md')
   File.delete dst if File.exist? dst
 
   FileUtils.copy_entry src, dst
+end
+
+desc 'Build then overwrite index.md in ../api_docs'
+task :api => :build do
+ api '01_native_ios_automation.md'
+end
+
+desc 'Build 02 then overwrite index.md in ../api_docs'
+task :api2 => :build do
+  api '02_native_android_automation.md'
 end

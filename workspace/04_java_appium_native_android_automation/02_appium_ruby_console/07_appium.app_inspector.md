@@ -1,1 +1,0 @@
-[2.2.7 appium.app inspector](/appium/02_ruby_appium_native_android_automation/02_appium_ruby_console/07_appium.app_inspector.md)

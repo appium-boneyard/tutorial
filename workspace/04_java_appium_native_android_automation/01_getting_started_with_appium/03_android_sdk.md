@@ -1,1 +1,0 @@
-[common Install Android](/common/install_android.md)

@@ -1,1 +1,0 @@
-[2.2.3 prebuilt android sample app](/appium/02_ruby_appium_native_android_automation/02_appium_ruby_console/03_prebuilt_android_sample_app.md)

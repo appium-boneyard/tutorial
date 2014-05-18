@@ -1,4 +1,4 @@
-#### Searching the Source Code
+## Searching the Source Code
 
 Appium is fully open source. Very few parts of the automation stack are not
 available on GitHub. The Apple tooling, for example Instruments,

@@ -1,4 +1,4 @@
-#### Professional Support
+## Professional Support
 
 Sauce Labs offers professional support for appium on their hosted cloud. If
 you are a Sauce Labs customer and encounter an issue on the Sauce platform,

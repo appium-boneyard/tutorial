@@ -1,3 +1,7 @@
+## Flaky Gem
+
+<ruby>
+
 [common flaky](/common/flaky_gem.md)
 
 To run the `test.rb` from the last lesson 3 times, use `flake 3 android[test]`
@@ -24,3 +28,11 @@ This output shows that we're able to run the test 3 times without issue.
 Additional information is saved in `/tmp/flaky`. It's not uncommon to have a
 test that fails 1 in 10 times. Rerunning failed tests is a way to see how
 stable they are.
+
+</ruby>
+
+<java>
+
+The flaky gem is only for ruby
+
+</java>

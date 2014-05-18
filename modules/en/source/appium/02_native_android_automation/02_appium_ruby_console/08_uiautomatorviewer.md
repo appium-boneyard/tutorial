@@ -1,4 +1,4 @@
-#### uiautomatorviewer
+## uiautomatorviewer
 
 Google includes the uiautomatorviewer tool in the Android SDK.
 uiautomator requires API 16 (Android 4.1, Jelly Bean) or above. Appium's

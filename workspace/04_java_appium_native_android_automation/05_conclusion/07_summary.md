@@ -1,1 +1,0 @@
-[2.5.7 summary](/appium/02_ruby_appium_native_android_automation/05_conclusion/07_summary.md)

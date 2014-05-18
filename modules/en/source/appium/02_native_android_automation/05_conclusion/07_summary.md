@@ -1,4 +1,4 @@
-#### Summary
+## Summary
 
 We covered a number of resources from Google GTAC videos to reading the
 Android source code. In addition to community support, appium is available for
