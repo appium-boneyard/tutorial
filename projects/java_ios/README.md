@@ -18,3 +18,7 @@ To compile and run all tests, run:
 To run a single test, run:
 
     mvn -Dtest=appium.tutorial.AutomatingASimpleActionTest test
+    
+To run on sauce:
+
+   mvn -Dsauce=true clean test

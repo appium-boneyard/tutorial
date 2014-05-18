@@ -83,7 +83,7 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
      */
     @Before
     public void setUp() throws Exception {
-        DesiredCapabilities capabilities = DesiredCapabilities.iphone();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("appium-version", "1.0.0");
         capabilities.setCapability("platformVersion", "7.1");
         capabilities.setCapability("platformName", "ios");

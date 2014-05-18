@@ -2,3 +2,4 @@
 modules/en/gen
 tutorials/
 /Gemfile.lock
+target/
