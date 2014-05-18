@@ -1,1 +1,1 @@
-[1.1.4 summary](/appium/01_ruby_appium_native_ios_automation/01_getting_started_with_appium/04_summary.md)
+[1.1.4 summary](/appium/01_native_ios_automation/01_getting_started_with_appium/04_summary.md)
