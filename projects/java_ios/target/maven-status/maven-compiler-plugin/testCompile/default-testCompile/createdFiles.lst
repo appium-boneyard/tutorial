@@ -1,0 +1,8 @@
+appium/tutorial/ios/AutomatingASimpleActionTest.class
+appium/tutorial/ios/util/AppiumTest.class
+appium/tutorial/ios/page/HomePage.class
+appium/tutorial/ios/page/ControlsPage.class
+appium/tutorial/ios/page/ButtonsPage.class
+appium/tutorial/ios/util/Helpers.class
+appium/tutorial/ios/PageObjectPatternTest.class
+appium/tutorial/ios/util/AppiumTest$1.class

@@ -1,6 +1,6 @@
 package appium.tutorial.ios.page;
 
-import org.openqa.selenium.By;
+import io.appium.java_client.MobileBy;
 
 import static appium.tutorial.ios.util.Helpers.element;
 
@@ -9,6 +9,6 @@ public abstract class ButtonsPage {
 
     /** Verify the buttons page has loaded **/
     public static void loaded() {
-        element(By.name("Buttons"));
+        element(MobileBy.AccessibilityId("Buttons"));
     }
 }

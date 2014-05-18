@@ -1,6 +1,6 @@
 package appium.tutorial.ios.page;
 
-import org.openqa.selenium.By;
+import io.appium.java_client.MobileBy;
 
 import static appium.tutorial.ios.util.Helpers.element;
 
@@ -12,7 +12,7 @@ public abstract class HomePage {
      *  Verify the buttons page has loaded. **/
     public static void buttonsClick() {
         loaded();
-        element(By.name("Buttons, Various uses of UIButton")).click();
+        element(MobileBy.AccessibilityId("Buttons, Various uses of UIButton")).click();
         ButtonsPage.loaded();
     }
 
@@ -21,12 +21,12 @@ public abstract class HomePage {
      *  Verify the controls page has loaded. **/
     public static void controlsClick() {
         loaded();
-        element(By.name("Controls, Various uses of UIControl")).click();
+        element(MobileBy.AccessibilityId("Controls, Various uses of UIControl")).click();
         ControlsPage.loaded();
     }
 
     /** Verify the home page has loaded **/
     public static void loaded() {
-        element(By.name("UICatalog"));
+        element(MobileBy.AccessibilityId("UICatalog"));
     }
 }

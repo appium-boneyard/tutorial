@@ -59,31 +59,31 @@ public abstract class Helpers {
 
     /** Return a static text element by xpath index **/
     public static WebElement s_text(int xpathIndex) {
-        return element(for_s_text(xpathIndex));
+        return element(for_text(xpathIndex));
     }
 
     /** Return a static text locator by xpath index **/
-    public static By for_s_text(int xpathIndex) {
+    public static By for_text(int xpathIndex) {
         return By.xpath("//text[" + xpathIndex +"]");
     }
 
     /** Return a static text element that contains text **/
-    public static WebElement s_text(String text) {
-        return element(for_s_text(text));
+    public static WebElement text(String text) {
+        return element(for_text(text));
     }
 
     /** Return a static text locator that contains text **/
-    public static By for_s_text(String text) {
+    public static By for_text(String text) {
         return By.xpath("text[contains(@text, '" + text + "')]");
     }
 
     /** Return a static text element by exact text **/
-    public static WebElement s_text_exact(String text) {
-        return element(for_s_text_exact(text));
+    public static WebElement text_exact(String text) {
+        return element(for_text_exact(text));
     }
 
     /** Return a static text locator by exact text **/
-    public static By for_s_text_exact(String text) {
+    public static By for_text_exact(String text) {
         return By.xpath("text[@text='" + text + "']");
     }
 
