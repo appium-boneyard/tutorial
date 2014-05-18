@@ -1,5 +1,6 @@
 package appium.tutorial.android.util;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,12 +14,12 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class Helpers {
 
-    public static RemoteWebDriver driver;
+    public static AppiumDriver driver;
     public static URL serverAddress;
     private static WebDriverWait driverWait;
 
     /** Initialize the webdriver. Must be called before using any helper methods. **/
-    public static void init(RemoteWebDriver webDriver, URL driverServerAddress) {
+    public static void init(AppiumDriver webDriver, URL driverServerAddress) {
         driver = webDriver;
         serverAddress = driverServerAddress;
         int timeoutInSeconds = 60;
@@ -106,23 +107,17 @@ public abstract class Helpers {
     }
 
     // -- mobile find
-    /** Return an element that contains name **/
-    public static WebElement name(String name) {
-        return MobileFind.name(name);
-    }
-
-    /** Return an element that exactly matches name **/
-    public static WebElement name_exact(String name) {
-        return MobileFind.name_exact(name);
-    }
 
     /** Return an element that contains name or text **/
-    public static WebElement scroll_to(String nameOrText) {
-        return MobileFind.scroll_to(nameOrText);
+    public static WebElement scroll_to(String value) {
+        String string = "[\"scroll\",[[3,\""+value+"\"]],[[7,\""+value+"\"]]]";
+        String[] scroll = {  value };
+
+        return driver.complexFind(scroll);
     }
 
     /** Return an element that exactly matches name or text **/
     public static WebElement scroll_to_exact(String nameOrText) {
-        return MobileFind.scroll_to_exact(nameOrText);
+        return driver.complexFind();
     }
 }

@@ -133,7 +133,7 @@ export PATH
     def escape_code_blocks markdown
       # must wrap in <p> or empty line in <code> will confuse markdown rendering
       markdown = EscapeUtils.escape_html(markdown).
-        gsub('&lt;code&gt;', '<p><code>').
+        gsub('&lt;code&gt;', '<p><code>'). # restore multi-line code blocks
         gsub('&lt;&#47;code&gt;', '</code></p>').
         gsub('&lt;aside class=&quot;success&quot;&gt;', '<aside class="success">'). # restore aside
         gsub('&lt;aside class=&quot;notice&quot;&gt;', '<aside class="notice">').

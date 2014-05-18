@@ -63,6 +63,8 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
 
             if (session != null) {
                 System.out.println(" " + "https://saucelabs.com/tests/" + session);
+            } else {
+                System.out.println();
             }
         }
     };
@@ -75,14 +77,11 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
     /** Run before each test **/
     @Before
     public void setUp() throws Exception {
-        DesiredCapabilities capabilities = DesiredCapabilities.android();
-        capabilities.setCapability("platformVersion", "4.3");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("appium-version", "1.0.0");
         capabilities.setCapability("platformName", "Android");
-        // device must be set for Sauce Labs
-        // Android, iPhone Simulator, iPad Simulator
-        capabilities.setCapability("device", "Android");
-        capabilities.setCapability("device-type", "tablet");
-        capabilities.setCapability("device-orientation", "portrait");
+        capabilities.setCapability("deviceName", "Android");
+        capabilities.setCapability("platformVersion", "4.3");
 
         // Set job name on Sauce Labs
         capabilities.setCapability("name", "Java Android tutorial " + date);
