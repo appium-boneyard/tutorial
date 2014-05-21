@@ -55,8 +55,8 @@
     <orderEntry type="library" name="Maven: com.saucelabs:saucerest:1.0.16" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-lang:commons-lang:2.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.saucelabs:sauce_junit:2.0.8" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.saucelabs:sauce_java_common:2.0.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.saucelabs:sauce_junit:2.1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.saucelabs:sauce_java_common:2.1.3" level="project" />
   </component>
 </module>
 
