@@ -5,6 +5,7 @@ import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 import com.saucelabs.saucerest.SauceREST;
+import io.appium.java_client.AppiumDriver;
 import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -85,8 +86,6 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
 
         // Set job name on Sauce Labs
         capabilities.setCapability("name", "Java Android tutorial " + date);
-
-        MessageFormat.format("blah", new Object());
         String userDir = System.getProperty("user.dir");
 
         URL serverAddress;
@@ -102,12 +101,12 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
 
             capabilities.setCapability("app", "sauce-storage:" + localApp);
             serverAddress = new URL("http://" + user + ":" + key + "@ondemand.saucelabs.com:80/wd/hub");
-            driver = new RemoteWebDriver(serverAddress, capabilities);
+            driver = new AppiumDriver(serverAddress, capabilities);
         } else {
             String appPath = Paths.get(userDir, localApp).toAbsolutePath().toString();
             capabilities.setCapability("app", appPath);
             serverAddress = new URL("http://127.0.0.1:4723/wd/hub");
-            driver = new RemoteWebDriver(serverAddress, capabilities);
+            driver = new AppiumDriver(serverAddress, capabilities);
         }
 
         sessionId = driver.getSessionId().toString();

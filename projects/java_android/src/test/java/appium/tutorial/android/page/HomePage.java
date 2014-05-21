@@ -1,8 +1,6 @@
 package appium.tutorial.android.page;
 
-import org.openqa.selenium.By;
-
-import static appium.tutorial.android.util.Helpers.element;
+import static appium.tutorial.android.util.Helpers.find;
 
 /** Page object for the home page **/
 public abstract class HomePage {
@@ -12,7 +10,7 @@ public abstract class HomePage {
      *  Verify the accessibility page has loaded. **/
     public static void accessibilityClick() {
         loaded();
-        element(By.name("Accessibility")).click();
+        find("Accessibility").click();
         AccessibilityPage.loaded();
     }
 
@@ -21,12 +19,12 @@ public abstract class HomePage {
      *  Verify the animation page has loaded. **/
     public static void animationClick() {
         loaded();
-        element(By.name("Animation")).click();
+        find("Animation").click();
         AnimationPage.loaded();
     }
 
     /** Verify the home page has loaded **/
     public static void loaded() {
-        element(By.name("NFC"));
+        find("NFC");
     }
 }

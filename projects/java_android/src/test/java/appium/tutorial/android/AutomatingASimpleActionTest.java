@@ -25,16 +25,16 @@ public class AutomatingASimpleActionTest extends AppiumTest {
     @org.junit.Test
     public void three() throws Exception {
         wait(for_text(2)).click();
-        name_exact("Accessibility Node Provider");
+        find("Accessibility Node Provider");
     }
 
-    @org.junit.Test
+  @org.junit.Test
     public void four() throws Exception {
         setWait(0);
 
         List<String> cell_names = new ArrayList<String>();
 
-        for (WebElement cell : tags("text")) {
+        for (WebElement cell : tags("android.widget.TextView")) {
             cell_names.add(cell.getAttribute("name"));
         }
 
@@ -45,8 +45,8 @@ public class AutomatingASimpleActionTest extends AppiumTest {
             scroll_to_exact(cell_name).click();
             waitInvisible(for_text_exact(cell_name));
             back();
-            wait(for_name_exact("Accessibility"));
-            wait(for_name_exact("Animation"));
+            wait(for_find("Accessibility"));
+            wait(for_find("Animation"));
         }
 
         setWait(30); // restore old implicit wait
