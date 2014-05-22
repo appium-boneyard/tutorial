@@ -111,7 +111,7 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
             driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         }
 
-        sessionId = ((RemoteWebDriver) driver).getSessionId().toString();
+        sessionId = driver.getSessionId().toString();
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         Helpers.init(driver);
