@@ -128,21 +128,21 @@ then we accessed the name attribute to verify it matches what we expect.
 To search for a UIAStaticText that matches, we'd use:
 
 <code>
-> s_text 'UICatalog'
+> text 'UICatalog'
 #<Selenium::WebDriver::Element:0x5e4e2159acc099a id="3">
 </code>
 
 This finds a static text that contains UICatalog. If we're looking for an
-exact match, then s_text_exact works.
+exact match, then text_exact works.
 
 <code>
-> s_text_exact 'UICatalog'
+> text_exact 'UICatalog'
 #<Selenium::WebDriver::Element:0x5e4e2159acc099a id="3">
 </code>
 
 These helper methods [are documented on GitHub](https://github.com/appium/ruby_lib/tree/master/docs).
-The difference between s_text and find is the class restriction. Find will match
-on any class while s_text will only match on a UIAStaticText element.
+The difference between text and find is the class restriction. Find will match
+on any class while text will only match on a UIAStaticText element.
 
 <code>
 UIAStaticText
@@ -175,7 +175,7 @@ The id search will look for the text that the id resolves to, regardless of clas
 To use an id with a class restriction, resolve it first:
 
 <code>
-> s_text(resolve_id('ButtonsExplain')).name
+> text(resolve_id('ButtonsExplain')).name
 "Buttons, Various uses of UIButton"
 </code>
 

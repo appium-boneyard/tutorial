@@ -42,7 +42,7 @@ methods static.
 ```ruby
 def button_uses_click
   self.assert
-  wait { s_text(2).click }
+  wait { text(2).click }
   button_uses.assert
 end
 ```
@@ -55,7 +55,7 @@ The button_uses page object defines the assert methods:
 
 ```ruby
 def assert_exists
-  s_text_exact resolve_id 'ButtonsTitle'
+  text_exact resolve_id 'ButtonsTitle'
 end
 
 def assert
@@ -65,7 +65,7 @@ end
 
 In this part of the app there's an ID. We're resolving that id to the text
 value and then performing an exact static text search. This is the same as
-`s_text_exact 'Buttons'` however because we're using ids,
+`text_exact 'Buttons'` however because we're using ids,
 the text can change and the ids will remain constant.
 
 `appium.txt` enables these page methods to be used from within the appium

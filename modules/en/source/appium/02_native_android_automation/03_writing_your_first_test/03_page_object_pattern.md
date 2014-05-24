@@ -42,7 +42,7 @@ methods static.
 ```ruby
   def accessibility_click
     self.assert
-    wait { s_text(2).click }
+    wait { text(2).click }
     accessibility.assert
   end
 ```
@@ -55,7 +55,7 @@ The accessibility page object defines the assert methods:
 
 ```ruby
   def assert_exists
-    s_text_exact 'Accessibility Node Querying'
+    text_exact 'Accessibility Node Querying'
   end
 
   def assert

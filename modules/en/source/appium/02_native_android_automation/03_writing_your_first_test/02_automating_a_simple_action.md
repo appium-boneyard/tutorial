@@ -12,8 +12,8 @@ Accessibility page, Animation triggers Animation, and so on.
 We're going to verify each element brings us to the correct page.
 
 ```ruby
-s_text('Accessibility').click
-s_text_exact 'Accessibility Node Provider'
+text('Accessibility').click
+text_exact 'Accessibility Node Provider'
 ```
 
 For the first entry, we click on Accessibility and then assert that the
@@ -27,8 +27,8 @@ element not found exception is raised.
 To overcome these timing problems, the wait helper method is useful.
 
 ```ruby
-wait { s_text('Accessibility').click }
-wait { s_text_exact 'Accessibility Node Provider' }
+wait { text('Accessibility').click }
+wait { text_exact 'Accessibility Node Provider' }
 ```
 
 Now the code will wait up to 30 seconds for the command to succeed. If it
@@ -40,7 +40,7 @@ Another problem with the test code is that we're depending on the exact text
 value. When the app changes, our tests will break.
 
 ```ruby
-cell_1 = wait { s_text 2 }
+cell_1 = wait { text 2 }
 
 wait { cell_1.click }
 wait { find_exact 'Accessibility Node Provider' }
@@ -57,7 +57,7 @@ reordered or the content description changes.
 To conclude this lesson, we'll look at the code to automate all 12 cells.
 
 ```ruby
-cell_names = tags('text').map { |cell| cell.name }
+cell_names = tags('android.widget.TextView').map { |cell| cell.name }
 
 cell_names[1..-1].each do |cell_name|
   wait { scroll_to_exact(cell_name).click }
@@ -130,8 +130,8 @@ We're going to verify each element brings us to the correct page.
 
 ```java
 // java
-s_text("Accessibility").click();
-s_text_exact("Accessibility Node Provider");
+text("Accessibility").click();
+text_exact("Accessibility Node Provider");
 ```
 
 For the first entry, we click on Accessibility and then assert that the
@@ -146,8 +146,8 @@ To overcome these timing problems, the wait helper method is useful.
 
 ```java
 // java
-wait(for_s_text("Accessibility")).click();
-wait(for_s_text_exact("Accessibility Node Provider"));
+wait(for_text("Accessibility")).click();
+wait(for_text_exact("Accessibility Node Provider"));
 ```
 
 Now the code will wait up to 30 seconds for the command to succeed. If it
@@ -160,7 +160,7 @@ value. When the app changes, our tests will break.
 
 ```java
 // java
-wait(for_s_text(2)).click();
+wait(for_text(2)).click();
 find_exact("Accessibility Node Provider");
 ```
 
@@ -179,7 +179,7 @@ setWait(0);
 
 List<String> cell_names = new ArrayList<String>();
 
-for (WebElement cell : tags("text")) {
+for (WebElement cell : tags("android.widget.TextView")) {
     cell_names.add(cell.getAttribute("name"));
 }
 
@@ -188,10 +188,10 @@ cell_names.remove(0);
 
 for (String cell_name : cell_names) {
     scroll_to_exact(cell_name).click();
-    waitInvisible(for_s_text_exact(cell_name));
+    waitInvisible(for_text_exact(cell_name));
     back();
-    wait(for_find_exact("Accessibility"));
-    wait(for_find_exact("Animation"));
+    wait(for_find("Accessibility"));
+    wait(for_find("Animation"));
 }
 
 setWait(30); // restore old implicit wait
@@ -222,7 +222,7 @@ The first item in the array is the page header. That's discarded with
 clicking each of them. To detect that the click was successful,
 the code waits for the cell name to no longer be visible.
 
-`waitInvisible(for_s_text_exact(cell_name));`
+`waitInvisible(for_text_exact(cell_name));`
 
 After that we're returning to the home page by using `back();`. The back method
 will return even though the app hasn't finished transitioning. I recommend
