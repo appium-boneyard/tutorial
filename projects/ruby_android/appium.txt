@@ -1,6 +1,6 @@
 [caps]
-appium-version = "1.0.0"
-platformName = "android"
+appium-version = "1.1.0"
+platformName = "Android"
 platformVersion = "4.3"
 deviceName = "Android"
 app = "./api.apk"
