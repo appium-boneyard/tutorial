@@ -118,27 +118,4 @@ describe Appium::Tutorial do
     expect_tutorial_path_exists true
     delete_tutorial_path
   end
-
-  it 'renders tables properly' do
-    m = Gollum::Markup.new(false)
-
-    txt = <<TXT
-Link | Summary
-  --:|:--
-[Aaaaa][npm]           | aaaa
-
-[npm]:      https://www.npmjs.org/
-TXT
-
-    actual = m.render_default(txt).gsub "\n", ''
-    expected = (<<-HTML).gsub "\n", ''
-<table><thead><tr><th align="right">Link</th>
-<th align="left">Summary</th>
-</tr></thead><tbody><tr><td align="right"><a href="https://www.npmjs.org/">Aaaaa</a></td>
-<td align="left">aaaa</td>
-</tr></tbody></table>
-    HTML
-
-    expect(actual).to eq(expected)
-  end
 end

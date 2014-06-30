@@ -1,8 +1,6 @@
 require 'fileutils' # ruby std lib
 
 require 'rubygems'
-require 'gollum-lib' # https://github.com/gollum/gollum-lib v3.0.0
-require 'nokogiri'
 require 'escape_utils'
 
 require_relative 'helpers' # must require helpers first
