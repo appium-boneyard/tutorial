@@ -10,7 +10,7 @@ number of excellent sessions related to user interface automation.
 
 - [GTAC 2013: Breaking the Matrix - Android Testing at Scale](https://www.youtube.com/watch?v=uHoB0KzQGRg)
     - [Moderator GTAC 2013 Breaking the Matrix](https://www.google.com/moderator/#15/e=203275&t=203275.4d)
-    - This session explains Google's approach to android testing. A [blog post](googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html) is also available.
+    - This session explains Google's approach to android testing. A [blog post](http://googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html) is also available.
 - [GTAC 2013: Appium: Automation for Mobile Apps](https://www.youtube.com/watch?v=1J0aXDbjiUE)
     - Jonathan Lipps, the chief architect of Appium, explains mobile app automation.
 - [GTAC 2013: Android UI Automation](https://www.youtube.com/watch?v=O1u8iBLUFL0)
