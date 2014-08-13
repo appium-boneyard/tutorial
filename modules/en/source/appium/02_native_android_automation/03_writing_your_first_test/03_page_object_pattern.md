@@ -82,7 +82,7 @@ The page object pattern is language independent and applies to any Selenium
 testing, not just appium. The idea is to create an abstraction at the page
 level. Each page knows how to perform the relevant actions.
 
-Clone the git repository and copy the [java_android](https://github.com/appium/tutorial/tree/master/modules/source/java_android)
+Clone the git repository and copy the [java_android](https://github.com/appium/tutorial/tree/master/projects/java_android)
 directory to your computer.
 
 `git clone https://github.com/appium/tutorial.git`
