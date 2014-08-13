@@ -114,7 +114,7 @@ The basic structure of the Api Demos test app is that clicking on the text
 brings you to a dedicated page about that text. Accessibility triggers the
 Accessibility page, Animation triggers Animation, and so on.
 
-Clone the git repository and copy the [java_android](https://github.com/appium/tutorial/tree/master/modules/source/java_android)
+Clone the git repository and copy the [java_android](https://github.com/appium/tutorial/tree/master/projects/java_android)
 directory to your computer.
 
 `git clone https://github.com/appium/tutorial.git`
