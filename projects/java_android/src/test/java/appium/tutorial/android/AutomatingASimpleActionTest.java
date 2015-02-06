@@ -25,7 +25,7 @@ public class AutomatingASimpleActionTest extends AppiumTest {
     @org.junit.Test
     public void three() throws Exception {
         wait(for_text(2)).click();
-        find("Accessibility Node Provider");
+        find("Custom Evaluator");
     }
 
   @org.junit.Test
