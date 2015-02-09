@@ -5,7 +5,7 @@ import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 import com.saucelabs.saucerest.SauceREST;
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
@@ -16,12 +16,10 @@ import org.junit.runner.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.text.MessageFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -101,12 +99,12 @@ public class AppiumTest implements SauceOnDemandSessionIdProvider {
 
             capabilities.setCapability("app", "sauce-storage:" + localApp);
             serverAddress = new URL("http://" + user + ":" + key + "@ondemand.saucelabs.com:80/wd/hub");
-            driver = new AppiumDriver(serverAddress, capabilities);
+            driver = new AndroidDriver(serverAddress, capabilities);
         } else {
             String appPath = Paths.get(userDir, localApp).toAbsolutePath().toString();
             capabilities.setCapability("app", appPath);
             serverAddress = new URL("http://127.0.0.1:4723/wd/hub");
-            driver = new AppiumDriver(serverAddress, capabilities);
+            driver = new AndroidDriver(serverAddress, capabilities);
         }
 
         sessionId = driver.getSessionId().toString();
