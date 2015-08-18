@@ -37,7 +37,7 @@ if one_test
   one_test = File.join(File.dirname(one_test),
                        File.basename(one_test, '.*') + '.rb')
   one_test = File.join(dir, test_dir + 'specs/', one_test)
-  raise "\nTest #{one_test} does not exist.\n" unless File.exists?(one_test)
+  fail "\nTest #{one_test} does not exist.\n" unless File.exist?(one_test)
   # require support (common.rb)
   Dir.glob(File.join dir, test_dir + '/*.rb') do |test|
     require test
@@ -66,10 +66,10 @@ end
 # Exit after tests.
 Minitest.after_run { $driver.x if $driver }
 # Run Minitest. Provide spec file array for tracing.
-passed = Minitest.run_specs({ :trace => trace_files }).first
+passed = Minitest.run_specs(trace: trace_files).first
 
 # Report pass/fail to Sauce
 if using_sauce
- passed = passed.failures == 0 && passed.errors == 0
- SauceWhisk::Jobs.change_status $driver.driver.session_id, passed
+  passed = passed.failures == 0 && passed.errors == 0
+  SauceWhisk::Jobs.change_status $driver.driver.session_id, passed
 end

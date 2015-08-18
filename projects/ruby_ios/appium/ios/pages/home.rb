@@ -6,14 +6,14 @@ module UICatalog
       #
 
       def button_uses_click
-        self.assert
-        wait { text(2).click }
+        assert
+        wait { text('Buttons').click }
         button_uses.assert
       end
 
       def control_uses_click
-        self.assert
-        wait { text(3).click }
+        assert
+        wait { text('Controls').click }
         control_uses.assert
       end
 
@@ -26,7 +26,7 @@ module UICatalog
       end
 
       def assert
-        wait { self.assert_exists }
+        wait { assert_exists }
       end
     end
   end

@@ -10,7 +10,7 @@ module UICatalog
       end
 
       def assert
-        wait { self.assert_exists }
+        wait { assert_exists }
       end
     end
   end
