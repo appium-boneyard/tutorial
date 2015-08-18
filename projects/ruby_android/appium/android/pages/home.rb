@@ -6,13 +6,13 @@ module APIDemos
       #
 
       def accessibility_click
-        self.assert
+        assert
         wait { text(2).click }
         accessibility.assert
       end
 
       def animation_click
-        self.assert
+        assert
         wait { text(3).click }
         animation.assert
       end
@@ -29,7 +29,7 @@ module APIDemos
       end
 
       def assert
-        wait { self.assert_exists }
+        wait { assert_exists }
       end
     end
   end
