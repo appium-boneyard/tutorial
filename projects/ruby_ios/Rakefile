@@ -3,16 +3,16 @@ require 'rubygems'
 require 'rake'
 
 # Run sh and ignore exception
-def run_sh cmd
+def run_sh(cmd)
   begin; sh cmd; rescue; end
 end
 
 # Run cmd. On failure run install and try again.
-def bash cmd
+def bash(cmd)
   sh cmd do |successful, result|
     # exitstatus 7 means bundle install failed
     # exitstatus 1 means the spec failed
-    if !successful && result.exitstatus === 7
+    if !successful && result.exitstatus == 7
       Rake::Task['install'].execute
       run_sh cmd
     end
@@ -27,7 +27,7 @@ end
 # Run all tests with:
 # rake ios
 desc 'Run the iOS tests'
-task :ios, :args, :test_file do |args, test_file|
+task :ios, :args, :test_file do |_args, test_file|
   # rake android['ok']
   # args = android
   # test_file = {:args=>"ok"}
@@ -36,7 +36,7 @@ task :ios, :args, :test_file do |args, test_file|
   ENV['APPIUM_TXT'] = path
   puts "Rake appium.txt path is: #{path}"
   cmd = 'bundle exec ruby ./appium/run.rb ios'
-  cmd += %Q( "#{test_file}") if test_file
+  cmd += %( "#{test_file}") if test_file
   bash cmd
 end
 
