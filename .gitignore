@@ -1,5 +1,5 @@
 .*
 modules/en/gen
 tutorials/
-/Gemfile.lock
+*.lock
 target/

@@ -1,7 +1,7 @@
 [caps]
 appium-version = "1.1.0"
 platformName = "iOS"
-platformVersion = "7.1"
+platformVersion = "8.4"
 deviceName = "iPhone Simulator"
 app = "./UICatalog6.1.app.zip"
 name = "Ruby iOS Tutorial"
