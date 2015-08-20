@@ -4,10 +4,8 @@ Getting started tutorials for appium
 
 #### 4 Tracks
 
-0. [Ruby Appium iOS](/modules/source/appium/01_ruby_appium_native_ios_automation)
-0. [Ruby Appium Android](/modules/source/appium/02_ruby_appium_native_android_automation)
-0. [Java Appium iOS](/modules/source/appium/03_java_appium_native_ios_automation)
-0. [Java Appium Android](/modules/source/appium/04_java_appium_native_android_automation)
+0. [Ruby Appium iOS](/modules/en/source/appium/01_native_ios_automation)
+0. [Ruby Appium Android](/modules/en/source/appium/02_native_android_automation)
 
 Each track is self contained.
 
