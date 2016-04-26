@@ -3,7 +3,7 @@
 <ruby>
 
 Now that we have a test fully written, it's time to apply the
-[page object pattern](https://code.google.com/p/selenium/wiki/PageObjects).
+[page object pattern](https://github.com/SeleniumHQ/selenium/wiki/PageObjects).
 
 This pattern is language independent and applies to any Selenium testing,
 not just appium. The idea is to create an abstraction at the page level. Each
@@ -74,7 +74,7 @@ Rake.
 <java>
 
 Now that we have a test fully written, it's time to apply the
-[page object pattern](https://code.google.com/p/selenium/wiki/PageObjects).
+[page object pattern](https://github.com/SeleniumHQ/selenium/wiki/PageObjects).
 For this tutorial, we're going to implement the page object pattern using
 abstract classes and static helper methods.
 
@@ -156,7 +156,7 @@ finding it.
 
 I encourage you to review the full source of the example. This is one way to
 implement the page object pattern. There are many other alternatives such as the
-[PageFactory](https://code.google.com/p/selenium/wiki/PageFactory) included in
+[PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) included in
 Selenium's Java bindings.
 
 </java>
