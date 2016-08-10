@@ -1,14 +1,12 @@
 ## Compiling the Android sample app
 
-`cd` into the appium repository root. Running `./reset.sh --android --dev` will
+`cd` into the appium repository root. Running `npm install sample-apps` will
 build the sample AndroidApp app ApiDemos.
 
-`* Configuring and cleaning/building Android test app: ApiDemos`
-
-After seeing `---- reset.sh completed successfully ----`,
+After `npm install sample-apps` finishes,
 you'll find appium's custom api demos at this location:
 
-`/appium/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk`
+`node_modules/sample-apps/node_modules/android-apidemos/bin/ApiDemos-debug.apk`
 
 Appium uses a modified ApiDemo app so make sure to use this version instead of
 what's provided in the SDK. The Appium fork of API Demos is [on GitHub](https://github.com/appium/android-apidemos).
