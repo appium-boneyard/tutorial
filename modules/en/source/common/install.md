@@ -32,7 +32,7 @@ Alternatively, download them directly from [Apple](https://developer.apple.com/d
 - Install the latest stable release of Ruby.
 
 <code>
-\curl -sSL https://get.rvm.io | bash -s stable
+curl -sSL https://get.rvm.io | bash -s stable
 rvm install ruby
 </code>
 
@@ -95,7 +95,7 @@ brew upgrade node
 brew install node
 </code>
 
-- Node should be `v0.10.26` or better.
+- Node should be `v4` or better.
 Don't use the big green install button on [nodejs.org](http://nodejs.org/) or
 all npm commands will require sudo.
 
@@ -128,26 +128,31 @@ mvn -version
 
 - Clone appium
 
-`git clone git://github.com/appium/appium.git`
+<code>
+git clone git://github.com/appium/appium.git
+</code>
 
-- Run reset.sh. When running reset.sh, make sure to be on Xcode 5.0.2 for
-best results. You may have problems if you reset on Xcode 4.6.3 and then
-switch to a newer Xcode.
+- Run `npm install`. When running `npm install`, make sure to be on Xcode 9+
 
-`cd appium; ./reset.sh`
+<code>
+cd appium
+npm install
+</code>
 
 If you see config errors, try cleaning git. `git clean -dfx; git reset --hard`
 
-You can also reset by platform. `./reset.sh --ios`
+- Authorize for testing. If you're only testing Android, this can be skipped.
 
-- Authorize for testing. Must run reset.sh as mentioned above before
-running the grunt task. If you're only testing Android, this can be skipped.
-
-<code>sudo `which grunt`; authorize</code>
+<code>
+npm install -g authorize-ios
+authorize-ios
+</code>
 
 - Start appium.
 
-`$ node .`
+<code>
+node .
+</code>
 
 ## Bash Profile
 
@@ -169,7 +174,7 @@ export PATH
 When using `Appium.app` make sure to set Appium -> Preferences... -> Check
 "Use External Appium Package" and set it to the path of Appium cloned from GitHub.
 
-Fix permission errors. npm shouldn't require sudo.
+Fix permission errors. `npm` should not require sudo.
 
 <code>
 brew uninstall node
@@ -177,8 +182,7 @@ brew install node
 rm -rf ./node_modules
 rm -rf "/Users/`whoami`/.npm"
 rm -rf /usr/local/lib/node_modules/
-./reset.sh --ios
-./reset.sh --android
+npm install
 </code>
 
 - [Helper bash methods](https://gist.github.com/bootstraponline/5580587)
