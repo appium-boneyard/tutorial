@@ -59,7 +59,7 @@ until the emulator is detected.
 time to launch the appium console. Make sure the ENV vars are exported.
 
 
-- Start appium console
+- Start appium ruby console
 
 `arc`
 

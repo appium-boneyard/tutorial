@@ -20,12 +20,12 @@ Note that [Appium.app](http://appium.io/) provides a ready to run version of
 appium. If you're using Appium.app then there's no need to run from source unless
 you want to use the latest and greatest.
 
-Install [Xcode 5.1 from the App Store](https://developer.apple.com/downloads/index.action).
+Install [Xcode 8 or above from the App Store](https://developer.apple.com/downloads/index.action).
 
 Install the command line build tools within Xcode. (Xcode -> Preferences -> Downloads).
 Alternatively, download them directly from [Apple](https://developer.apple.com/downloads/index.action).
 
-- Install [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+- Install [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 ## Install Ruby
 
@@ -83,7 +83,7 @@ gem uninstall -aIx flaky
 gem install --no-rdoc --no-ri flaky
 </code>
 
-- Install [brew](http://mxcl.github.io/homebrew/)
+- Install [Homebrew](http://mxcl.github.io/homebrew/)
 
 `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
@@ -91,30 +91,16 @@ gem install --no-rdoc --no-ri flaky
 
 <code>
 brew update
-brew upgrade node
-brew install node
+brew install homebrew/versions/node6-lts
 </code>
 
-- Node should be `v4` or better.
+- Node should be `v6` or better.
 Don't use the big green install button on [nodejs.org](http://nodejs.org/) or
 all npm commands will require sudo.
 
 <code>
 node --version
 npm --version
-</code>
-
-- Install grunt.
-
-`npm install -g grunt grunt-cli`
-
-- Run the version command from the appium folder. If you're not in that
-folder, the grunt version will not display.
-
-<code>
-grunt --version
-grunt-cli v0.1.13
-grunt v0.4.2
 </code>
 
 - Install [ant](http://ant.apache.org/) if it's not already installed.
@@ -126,26 +112,70 @@ ant -version
 mvn -version
 </code>
 
-- Clone appium
+
+There is also a dependency, made necessary by Facebook's [WebDriverAgent](https://github.com/facebook/WebDriverAgent),
+for the [Carthage](https://github.com/Carthage/Carthage) dependency manager. If you
+do not have Carthage on your system, it can also be installed with
+[Homebrew](http://brew.sh/)
+
+```
+brew install carthage
+```
+
+```
+brew install ideviceinstaller
+```
+
+`ideviceinstaller` doesn't work with iOS 10 yet. So we need to install [ios-deploy](https://github.com/phonegap/ios-deploy)
+
+```
+npm install -g ios-deploy
+```
+
+On some systems the default logger, `idevicesyslog`, does not work. You can install `deviceconsole` and specify its path with the `realDeviceLogger` capability
+(**note:** This path should be the path to the _executable_ installed by the below command. It will be the directory created by the below command, followed by
+`/deviceconsole`).
+
+```
+npm install -g deviceconsole
+```
+
+For real devices we can use [xcpretty](https://github.com/supermarin/xcpretty) to make Xcode output more reasonable. This can be installed by
+
+```
+gem install xcpretty
+```
+
+- Executing appium from source, Clone appium
 
 <code>
 git clone git://github.com/appium/appium.git
 </code>
 
-- Run `npm install`. When running `npm install`, make sure to be on Xcode 9+
+- Run `npm install`. When running `npm install`, make sure to have Xcode 8+
 
 <code>
 cd appium
 npm install
 </code>
 
-If you see config errors, try cleaning git. `git clean -dfx; git reset --hard`
+Alternatively you can install appium using npm
+<code>
+npm install appium -g
+</code>
 
+If you see config errors, try cleaning git. `git clean -dfx; git reset --hard`
 - Authorize for testing. If you're only testing Android, this can be skipped.
 
 <code>
-npm install -g authorize-ios
+npm install -g authorize-ios appium-doctor appium-gulp-plugins
 authorize-ios
+</code>
+
+Verify your appium installation with appium-doctor
+<code>
+appium-doctor --ios
+appium-doctor --android
 </code>
 
 - Start appium.
@@ -155,8 +185,6 @@ node .
 </code>
 
 ## Bash Profile
-
-- You may have to add grunt as well `/usr/local/share/npm/bin/grunt`
 
 <code>
 $ nano ~/.bash_profile
